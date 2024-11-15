@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c668eipltsudh"]
+
+[ext_resource type="PackedScene" uid="uid://c2fbngli1h5bc" path="res://scens/character.tscn" id="1_g1gff"]
+[ext_resource type="PackedScene" uid="uid://cgt36nw3546mi" path="res://scens/room.tscn" id="1_oukgq"]
+[ext_resource type="Script" path="res://scens/game.gd" id="1_qqfnu"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_qqfnu")
+
+[node name="room" parent="." instance=ExtResource("1_oukgq")]
+
+[node name="Character" parent="room" instance=ExtResource("1_g1gff")]
+position = Vector2(54, 44)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(256, 601)
+zoom = Vector2(0.6, 0.6)

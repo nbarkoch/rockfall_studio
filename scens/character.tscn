@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2fbngli1h5bc"]
+
+[ext_resource type="Script" path="res://scens/player.gd" id="1_mrx3g"]
+[ext_resource type="Texture2D" uid="uid://gl544vi2rq1m" path="res://sprites/statue_clown.png" id="1_rvsmj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6psh"]
+size = Vector2(100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1b82"]
+atlas = ExtResource("1_rvsmj")
+region = Rect2(0, 0, 104, 169)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxvyi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1b82")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Character" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+safe_margin = 0.001
+script = ExtResource("1_mrx3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_w6psh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -42)
+sprite_frames = SubResource("SpriteFrames_hxvyi")
