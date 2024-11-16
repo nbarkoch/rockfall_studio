@@ -2,16 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://c2fbngli1h5bc" path="res://scens/character.tscn" id="1_g1gff"]
 [ext_resource type="PackedScene" uid="uid://cgt36nw3546mi" path="res://scens/room.tscn" id="1_oukgq"]
-[ext_resource type="Script" path="res://scens/game.gd" id="1_qqfnu"]
+[ext_resource type="Script" path="res://scens/game_manager.gd" id="4_4jvtq"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_qqfnu")
 
 [node name="room" parent="." instance=ExtResource("1_oukgq")]
+y_sort_enabled = true
 
-[node name="Character" parent="room" instance=ExtResource("1_g1gff")]
+[node name="Character" parent="." instance=ExtResource("1_g1gff")]
+unique_name_in_owner = true
 position = Vector2(54, 44)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(256, 601)
+position = Vector2(256, 556)
 zoom = Vector2(0.6, 0.6)
+
+[node name="GameManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_4jvtq")

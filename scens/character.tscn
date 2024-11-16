@@ -23,15 +23,15 @@ animations = [{
 
 [node name="Character" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="PlayerBody2D" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 safe_margin = 0.001
 script = ExtResource("1_mrx3g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0.5, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody2D"]
 shape = SubResource("RectangleShape2D_w6psh")
+one_way_collision_margin = 0.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerBody2D"]
 position = Vector2(0, -42)
 sprite_frames = SubResource("SpriteFrames_hxvyi")

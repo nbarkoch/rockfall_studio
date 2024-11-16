@@ -1,19 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://c0g1rvb0fn4c0"]
 
-[ext_resource type="Texture2D" uid="uid://brbmgq3u8xcbp" path="res://sprites/block.png" id="1_tad4l"]
+[ext_resource type="Texture2D" uid="uid://cpypb5rawx7ui" path="res://sprites/env1/floor_arrow_0.png" id="1_odkbw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21cwt"]
 size = Vector2(104, 104)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v5d7j"]
-atlas = ExtResource("1_tad4l")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubpcn"]
+atlas = ExtResource("1_odkbw")
 region = Rect2(0, 0, 104, 104)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovnjv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v5d7j")
+"texture": SubResource("AtlasTexture_ubpcn")
 }],
 "loop": true,
 "name": &"default",

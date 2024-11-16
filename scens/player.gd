@@ -2,42 +2,65 @@ extends CharacterBody2D
 
 class_name Player
 
+@onready var gameManager = get_node("/root/GameManager")
+
+
+
 const MIN_SPEED = 1000
 var current_speed = 0
 var current_direction = Vector2.ZERO
-var previous_position : Vector2
+var last_position : Vector2
 var time_elapsed : float = 0.0
 var stop_time : float = 0.05 
+var tile_size = 104
 
 func _ready():
-	previous_position = position
-	time_elapsed = 0.0
+	last_position = position
+	position.x = round(position.x / tile_size) * tile_size - 3
+	position.y = round(position.y / tile_size) * tile_size +  7
+	gameManager.setPlayer(self)
+	
 	
 # Function to set the direction and move the player
 func move(direction: Vector2, speed: float):
 	if current_speed == 0:
 		time_elapsed = 0.0
+		last_position = position
 		current_direction = direction
 		current_speed = max(speed, MIN_SPEED)
 	
-
 func _physics_process(delta):
+	if abs(current_direction.x) > 0:
+		position.y = last_position.y
+	elif abs(current_direction.y) > 0:
+		position.x = last_position.x
+	if current_speed == 0:
+		position.x = last_position.x
+		position.y = last_position.y
 	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_collider() is TileMap:
-			time_elapsed += delta
-		else:
-			time_elapsed = 0.0
-		
-		if time_elapsed >= stop_time:
-			if abs(position.x - previous_position.x) < 0.01 and \
-					abs(position.y - previous_position.y) < 0.01:
-				current_speed = 0
-				current_direction = Vector2.ZERO
-				
-			time_elapsed = 0.0
-			previous_position = position
-			
-	velocity = current_direction * current_speed
-	move_and_slide()
+	
+	if current_speed != 0:
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+			if collider is TileMap or collider is StaticBody2D:
+				var collision_normal = collision.get_normal()
+				if current_direction.dot(collision_normal) <= -0.95:
+					block()
+					break
+	
+		velocity = current_direction * current_speed
+		move_and_slide()
+	else:
+		position.x = round(position.x / tile_size) * tile_size - 3
+		position.y = round(position.y / tile_size) * tile_size +  7
+	
+	last_position.x = position.x
+	last_position.y = position.y
+
+
+func block():
+	current_direction = Vector2.ZERO
+	position = last_position
+	current_speed = 0
+	gameManager.setPlayerPosition(position)
