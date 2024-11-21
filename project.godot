@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://scens/game_manager.gd"
+RoomManager="*res://scens/room_manager.gd"
 
 [display]
 

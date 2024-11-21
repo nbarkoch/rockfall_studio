@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var collision_shape = get_node("StaticBody2D/CollisionShape2D")
 @onready var animated_sprite = get_node("StaticBody2D/AnimatedSprite2D")
-@onready var gameManager = get_node("/root/GameManager")
+@onready var roomManager = get_node("/root/RoomManager")
 
 @export_enum("UP", "DOWN", "LEFT", "RIGHT")
 var direction: String = "UP"
@@ -23,8 +23,8 @@ func set_sprite():
 
 func _ready():
 	set_sprite()
-	gameManager.connect("player_position_changed", on_player_position_changed)
-	on_player_position_changed(gameManager.get_player_position())
+	roomManager.connect("player_position_changed", on_player_position_changed)
+	on_player_position_changed(roomManager.get_player_position())
 	
 
 func _process(delta):

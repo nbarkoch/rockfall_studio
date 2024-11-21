@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-@onready var gameManager = get_node("/root/GameManager")
+@onready var roomManager = get_node("/root/RoomManager")
 
 @onready var audioStreamPlayer = $AudioStreamPlayer
 
@@ -19,7 +19,7 @@ func _ready():
 	last_position = position
 	position.x = round(position.x / tile_size) * tile_size - 3
 	position.y = round(position.y / tile_size) * tile_size +  7
-	gameManager.setPlayer(self)
+	roomManager.setPlayer(self)
 	
 	
 # Function to set the direction and move the player
@@ -34,6 +34,7 @@ func move(direction: Vector2, speed: float):
 		
 	
 func _physics_process(delta):
+
 	if abs(current_direction.x) > 0:
 		position.y = last_position.y
 	elif abs(current_direction.y) > 0:
@@ -41,8 +42,7 @@ func _physics_process(delta):
 	if current_speed == 0:
 		position.x = last_position.x
 		position.y = last_position.y
-	
-	
+
 	if current_speed != 0:
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
@@ -102,5 +102,5 @@ func block():
 	velocity = Vector2.ZERO
 	position = last_position
 	current_speed = 0
-	gameManager.setPlayerPosition(position)
+	roomManager.setPlayerPosition(position)
 	audioStreamPlayer.stop()

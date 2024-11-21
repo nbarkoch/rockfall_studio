@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://cgt36nw3546mi"]
+[gd_scene load_steps=37 format=3 uid="uid://cgt36nw3546mi"]
 
 [ext_resource type="Texture2D" uid="uid://brbmgq3u8xcbp" path="res://sprites/block.png" id="1_aio2y"]
 [ext_resource type="PackedScene" uid="uid://lu7cqdwupysa" path="res://scens/block_one_side_entry.tscn" id="1_jqbha"]
+[ext_resource type="Script" path="res://scens/room_loader.gd" id="1_w60gt"]
 [ext_resource type="Texture2D" uid="uid://bqs8i7g8ejbce" path="res://sprites/env1/wall_2.png" id="2_4fxvh"]
 [ext_resource type="PackedScene" uid="uid://bmqxukuivhc7m" path="res://scens/moveable_block.tscn" id="2_ldlbo"]
 [ext_resource type="Texture2D" uid="uid://cvj2yxw6ov2o7" path="res://sprites/env1/wall_0.png" id="3_dbwhw"]
@@ -10,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://cl66ht0m1n6yx" path="res://sprites/env1/floor_0.png" id="4_7n5dd"]
 [ext_resource type="PackedScene" uid="uid://c5huhaj32batm" path="res://scens/block_with_plants.tscn" id="4_ckkh3"]
 [ext_resource type="Texture2D" uid="uid://cirjt4yi6hjs1" path="res://sprites/env1/left_0.png" id="5_siqlj"]
+[ext_resource type="PackedScene" uid="uid://buyjca2gf76b4" path="res://scens/starting_point_floor.tscn" id="5_wmu2b"]
 [ext_resource type="Texture2D" uid="uid://c1a361ple67sw" path="res://sprites/env1/floor_1.png" id="6_25fie"]
 [ext_resource type="Texture2D" uid="uid://bjr3638kby0ua" path="res://sprites/env1/right_0.png" id="6_hwygc"]
+[ext_resource type="PackedScene" uid="uid://dfu0ci1hircml" path="res://scens/finish_area.tscn" id="7_54tei"]
 [ext_resource type="Texture2D" uid="uid://rfji4pab5nsg" path="res://sprites/env1/up_0.png" id="7_sg6n3"]
 [ext_resource type="Texture2D" uid="uid://bek7gjlne0wam" path="res://sprites/env1/down_0.png" id="8_bhxb1"]
 [ext_resource type="Texture2D" uid="uid://2i0x07ydsp3n" path="res://sprites/env1/wall_1.png" id="9_xcl8d"]
@@ -19,12 +22,15 @@
 [ext_resource type="Texture2D" uid="uid://cqe2weq137oli" path="res://sprites/env1/edge_left_top.png" id="17_8tw3x"]
 [ext_resource type="Texture2D" uid="uid://dnsegne48axgm" path="res://sprites/env1/edge_right_bottom.png" id="18_7gabw"]
 [ext_resource type="Texture2D" uid="uid://dw227um11i6ss" path="res://sprites/env1/edge_right_top.png" id="19_voury"]
+[ext_resource type="PackedScene" uid="uid://c2fbngli1h5bc" path="res://scens/character.tscn" id="21_hohop"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7w52b"]
 scenes/1/scene = ExtResource("1_jqbha")
 scenes/2/scene = ExtResource("2_ldlbo")
 scenes/3/scene = ExtResource("3_nsobf")
 scenes/4/scene = ExtResource("4_ckkh3")
+scenes/5/scene = ExtResource("5_wmu2b")
+scenes/6/scene = ExtResource("7_54tei")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08q4a"]
 texture = ExtResource("1_aio2y")
@@ -180,6 +186,7 @@ sources/14 = SubResource("TileSetAtlasSource_16e7d")
 
 [node name="room" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_w60gt")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -188,9 +195,9 @@ format = 2
 layer_0/name = "blocks"
 layer_0/y_sort_enabled = true
 layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(131071, 0, 262144, 196607, 0, 262144, 262143, 0, 196608, 655365, 0, 196608, 524293, 0, 196608, 458757, 0, 196608, 393221, 0, 196608, 327685, 0, 196608, 262149, 0, 196608, 196613, 0, 196608, 65541, 0, 262144, 5, 0, 262144, 65542, 0, 196608, 6, 0, 196608, 4, 0, 262144, 3, 0, 262144, 2, 0, 196608, 1, 0, 262144, 786435, 0, 262144, 786433, 0, 262144, 851969, 0, 196608, 851971, 0, 196608, 131076, 0, 131072, 131072, 0, 196608, 393217, 0, 131072, 393216, 0, 196608, 65540, 0, 196608, 393219, 0, 196608, 524292, 0, 131072, 589828, 0, 131072, 589826, 0, 131072, 65537, 0, 131072, 786434, 0, 262144, 720895, 0, 196608, 851967, 0, 262144, 786431, 0, 262144, 655359, 0, 196608, 589823, 0, 196608, 524287, 0, 196608, 458751, 0, 196608, 393215, 0, 196608, 786432, 0, 262144, 786437, 0, 262144, 786436, 0, 262144, 720901, 0, 262144, 589829, 0, 196608, 0, 0, 262144, 65535, 0, 262144)
+layer_0/tile_data = PackedInt32Array(131071, 0, 262144, 196607, 0, 196608, 262143, 0, 196608, 655365, 0, 196608, 524293, 0, 196608, 458757, 0, 196608, 393221, 0, 196608, 327685, 0, 196608, 262149, 0, 196608, 196613, 0, 196608, 65541, 0, 262144, 5, 0, 262144, 65542, 0, 196608, 6, 0, 196608, 4, 0, 262144, 3, 0, 262144, 2, 0, 196608, 1, 0, 196608, 786435, 0, 196608, 786433, 0, 196608, 851969, 0, 196608, 851971, 0, 196608, 131076, 0, 131072, 131072, 0, 196608, 393217, 0, 131072, 393216, 0, 196608, 65540, 0, 196608, 393219, 0, 196608, 524292, 0, 131072, 589828, 0, 131072, 589826, 0, 131072, 65537, 0, 131072, 786434, 0, 196608, 720895, 0, 196608, 851967, 0, 262144, 786431, 0, 262144, 655359, 0, 196608, 589823, 0, 196608, 524287, 0, 196608, 458751, 0, 196608, 393215, 0, 196608, 786432, 0, 262144, 786437, 0, 262144, 786436, 0, 262144, 720901, 0, 262144, 589829, 0, 196608, 0, 0, 262144, 65535, 0, 262144)
 layer_1/name = "ground"
-layer_1/tile_data = PackedInt32Array(5, 14, 3, 65536, 14, 3, 196608, 14, 1, 262144, 14, 2, 327680, 65550, 3, 393216, 14, 3, 393221, 14, 3, 65541, 14, 3, 262149, 14, 3, 327685, 14, 3, 458757, 14, 3, 524293, 14, 3, 589829, 14, 3, 458752, 14, 3, 524288, 14, 0, 589824, 14, 3, 655365, 14, 3, 655360, 14, 3, 655361, 65550, 3, 655362, 14, 3, 655363, 65550, 3, 655364, 65550, 3, 262146, 14, 3, 458755, 14, 3, 131077, 65550, 0, 458753, 14, 3, 524289, 14, 3, 589825, 65550, 3, 196609, 14, 3, 262145, 65550, 3, 327681, 14, 3, 327682, 14, 3, 327683, 14, 3, 262147, 65550, 2, 196611, 14, 3, 196610, 14, 3, 131074, 65550, 3, 65537, 14, 2, 65538, 14, 3, 65539, 14, 3, 65540, 14, 3, 131076, 14, 3, 131075, 14, 3, 196612, 65550, 3, 262148, 14, 3, 327684, 14, 3, 393220, 14, 3, 458756, 14, 3, 524292, 14, 3, 589828, 65550, 3, 589827, 14, 3, 524291, 14, 3, 524290, 14, 3, 589826, 14, 3, 458754, 65550, 3, 393218, 14, 3, 393219, 65550, 3, 6, 11, 0, 65542, 11, 0, 131078, 65550, 3, 720901, 14, 3, 720900, 14, 3, 720899, 14, 3, 720898, 65550, 3, 720897, 14, 3, 720896, 14, 3, 786431, 14, 3, 720895, 14, 3, 655359, 14, 3, 589823, 14, 3, 524287, 14, 3, 458751, 14, 3, 393215, 14, 3, 327679, 65550, 3, 196607, 14, 3, 131071, 14, 3, 65535, 14, 3, 262143, 14, 3, 196614, 65550, 0, 786434, 14, 3, 786430, 10, 0, 720894, 11, 0, 655358, 11, 0, 589822, 11, 0, 524286, 11, 0, 458750, 11, 0, 393214, 11, 0, 327678, 65550, 0, 131072, 14, 3, 131073, 14, 3, 196613, 14, 3, 393217, 14, 2, 0, 14, 3, 1, 14, 3, 2, 14, 3, 3, 14, 3, 4, 14, 3)
+layer_1/tile_data = PackedInt32Array(5, 14, 3, 65536, 14, 3, 196608, 14, 1, 262144, 14, 2, 327680, 65550, 3, 393216, 14, 3, 393221, 14, 3, 65541, 14, 3, 262149, 14, 3, 327685, 14, 3, 458757, 14, 3, 524293, 14, 3, 589829, 14, 3, 458752, 14, 3, 524288, 14, 0, 589824, 14, 3, 655365, 14, 3, 655360, 14, 3, 655361, 65550, 3, 655362, 14, 3, 655363, 65550, 3, 655364, 65550, 3, 262146, 14, 3, 458755, 14, 3, 131077, 65550, 0, 458753, 14, 3, 524289, 14, 3, 589825, 65550, 3, 196609, 14, 3, 262145, 65550, 3, 327681, 14, 3, 327682, 14, 3, 327683, 14, 3, 262147, 65550, 2, 196611, 14, 3, 196610, 14, 3, 131074, 65550, 3, 65537, 14, 2, 65538, 0, 327680, 65539, 14, 3, 65540, 14, 3, 131076, 14, 3, 131075, 14, 3, 196612, 65550, 3, 262148, 14, 3, 327684, 14, 3, 393220, 14, 3, 458756, 14, 3, 524292, 14, 3, 589828, 65550, 3, 589827, 14, 3, 524291, 14, 3, 524290, 14, 3, 589826, 14, 3, 458754, 65550, 3, 393218, 14, 3, 393219, 65550, 3, 6, 11, 0, 65542, 11, 0, 131078, 0, 393216, 720901, 14, 3, 720900, 14, 3, 720899, 14, 3, 720898, 65550, 3, 720897, 14, 3, 720896, 14, 3, 786431, 14, 3, 720895, 14, 3, 655359, 14, 3, 589823, 14, 3, 524287, 14, 3, 458751, 14, 3, 393215, 14, 3, 327679, 65550, 3, 196607, 14, 3, 131071, 14, 3, 65535, 14, 3, 262143, 14, 3, 196614, 65550, 0, 786434, 14, 3, 327678, 65550, 0, 131072, 14, 3, 131073, 14, 3, 196613, 14, 3, 393217, 14, 2, 0, 14, 3, 1, 14, 3, 2, 14, 3, 3, 14, 3, 4, 14, 3)
 
 [node name="EdgesSprites" type="Node2D" parent="."]
 z_index = 2
@@ -213,3 +220,12 @@ offset = Vector2(100, 0)
 position = Vector2(89, 21)
 texture = ExtResource("19_voury")
 offset = Vector2(100, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(256, 556)
+offset = Vector2(0, 90)
+zoom = Vector2(0.65, 0.65)
+
+[node name="Character" parent="." instance=ExtResource("21_hohop")]
+unique_name_in_owner = true
+position = Vector2(54, 45)
