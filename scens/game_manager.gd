@@ -45,7 +45,6 @@ func _process(delta):
 
 func setPlayer(player: Player):
 	self.player = player
-	print("player.position", player.position)
 	setPlayerPosition(player.position)
 	
 func get_player_position():

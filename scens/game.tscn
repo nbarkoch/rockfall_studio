@@ -5,17 +5,18 @@
 [ext_resource type="Script" path="res://scens/game_manager.gd" id="4_4jvtq"]
 
 [node name="Game" type="Node2D"]
-
-[node name="room" parent="." instance=ExtResource("1_oukgq")]
 y_sort_enabled = true
-
-[node name="Character" parent="." instance=ExtResource("1_g1gff")]
-unique_name_in_owner = true
-position = Vector2(54, 44)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(256, 556)
-zoom = Vector2(0.6, 0.6)
+offset = Vector2(0, 90)
+zoom = Vector2(0.65, 0.65)
+
+[node name="room" parent="." instance=ExtResource("1_oukgq")]
+
+[node name="Character" parent="." instance=ExtResource("1_g1gff")]
+unique_name_in_owner = true
+position = Vector2(263, 150)
 
 [node name="GameManager" type="Node2D" parent="."]
 unique_name_in_owner = true

@@ -1,30 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2fbngli1h5bc"]
+[gd_scene load_steps=9 format=3 uid="uid://c2fbngli1h5bc"]
 
 [ext_resource type="Script" path="res://scens/player.gd" id="1_mrx3g"]
-[ext_resource type="Texture2D" uid="uid://gl544vi2rq1m" path="res://sprites/statue_clown.png" id="1_rvsmj"]
+[ext_resource type="Texture2D" uid="uid://cauulm0fathag" path="res://sprites/env1/statue_shadow.png" id="2_t8ndx"]
+[ext_resource type="Texture2D" uid="uid://bmqxa77u6euy6" path="res://sprites/statues/0.png" id="2_xca6e"]
+[ext_resource type="Texture2D" uid="uid://btwb0frwwda58" path="res://sprites/env1/big_statue.png" id="3_gf5mi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6psh"]
 size = Vector2(100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c1b82"]
-atlas = ExtResource("1_rvsmj")
-region = Rect2(0, 0, 104, 169)
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2fp3"]
+atlas = ExtResource("2_xca6e")
+region = Rect2(0, 0, 105, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkg6k"]
+atlas = ExtResource("3_gf5mi")
+region = Rect2(0, 0, 342, 457)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hxvyi"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c1b82")
+"texture": SubResource("AtlasTexture_k2fp3")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkg6k")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [node name="Character" type="Node2D"]
+y_sort_enabled = true
 
 [node name="PlayerBody2D" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
+z_index = 1
 safe_margin = 0.001
 script = ExtResource("1_mrx3g")
 
@@ -32,6 +48,17 @@ script = ExtResource("1_mrx3g")
 shape = SubResource("RectangleShape2D_w6psh")
 one_way_collision_margin = 0.0
 
+[node name="ShadowSprite2D" type="Sprite2D" parent="PlayerBody2D"]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(1.09673e-05, -3.99999)
+scale = Vector2(0.286219, 0.254867)
+texture = ExtResource("2_t8ndx")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerBody2D"]
-position = Vector2(0, -42)
+position = Vector2(-4.76837e-07, -17)
+scale = Vector2(0.292398, 0.293217)
 sprite_frames = SubResource("SpriteFrames_hxvyi")
+animation = &"new_animation"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerBody2D"]
