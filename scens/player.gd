@@ -63,10 +63,11 @@ func _physics_process(delta):
 	
 		velocity = current_direction * current_speed
 		
-		if not played_sound and (move_from_p - position).length() > 100:
+		if not played_sound and (move_from_p - position).length() > 30:
 			played_sound = true
-			audioStreamPlayer.stream = preload("res://sounds/drag.wav")
+			audioStreamPlayer.stream = preload("res://sounds/drag.ogg")
 			audioStreamPlayer.play()
+			
 			
 		move_and_slide()
 	else:
@@ -102,3 +103,4 @@ func block():
 	position = last_position
 	current_speed = 0
 	gameManager.setPlayerPosition(position)
+	audioStreamPlayer.stop()
