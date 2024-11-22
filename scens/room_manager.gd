@@ -14,7 +14,6 @@ var tileMap: TileMap = null
 @onready var player: Player = null
 signal player_position_changed(position: Vector2)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("swipe - mause"):
 		if !swiping:
@@ -52,9 +51,7 @@ func get_player_position():
 	if player != null:
 		return player.position
 	return Vector2.ZERO
-		
-func get_tilemap():
-	return tileMap
+	
 	
 func setPlayerPosition(position: Vector2):
 	player.position = position
@@ -63,3 +60,34 @@ func setPlayerPosition(position: Vector2):
 
 func finishLevel():
 	pass
+
+
+
+const levels = [
+	"res://scens/levels/level1.tscn",
+	"res://scens/levels/level2.tscn",
+	"res://scens/levels/level3.tscn",
+	"res://scens/levels/level4.tscn",
+	"res://scens/levels/level5.tscn",
+	"res://scens/levels/level6.tscn",
+]
+
+func loadLevel(level_i: int):
+	var tilemap_scene = load(levels[level_i])
+	var tilemap_instance: TileMap = tilemap_scene.instantiate()
+	tilemap_instance.z_index = 0
+	tilemap_instance.y_sort_enabled = true
+	tilemap_instance.z_as_relative = true
+	add_child(tilemap_instance)  
+	setTileMap((tilemap_instance))
+	
+	var player_scene = load("res://scens/character.tscn")
+	var character = player_scene.instantiate()
+	var player = character.get_node('PlayerBody2D')
+	player.z_index = 1
+	player.y_sort_enabled = true
+	player.z_as_relative = true
+	tilemap_instance.add_child(character)
+	player.position = Vector2.ZERO
+	player.last_position = position
+	setPlayer(player)

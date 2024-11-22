@@ -17,8 +17,7 @@ var played_sound = false
 
 func _ready():
 	last_position = position
-	position.x = round(position.x / tile_size) * tile_size - 3
-	position.y = round(position.y / tile_size) * tile_size +  7
+	locate()	
 	roomManager.setPlayer(self)
 	
 	
@@ -71,8 +70,7 @@ func _physics_process(delta):
 			
 		move_and_slide()
 	else:
-		position.x = round(position.x / tile_size) * tile_size - 3
-		position.y = round(position.y / tile_size) * tile_size +  7
+		locate()		
 	
 	last_position.x = position.x
 	last_position.y = position.y
@@ -104,3 +102,8 @@ func block():
 	current_speed = 0
 	roomManager.setPlayerPosition(position)
 	audioStreamPlayer.stop()
+	
+func locate():
+	var half_size = round( (tile_size/ 2))
+	position.x = round((position.x) / half_size) * half_size
+	position.y = round((position.y) / half_size) * half_size
