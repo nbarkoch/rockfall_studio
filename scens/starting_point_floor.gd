@@ -3,9 +3,10 @@ extends Node2D
 @onready var roomManager = get_node("/root/RoomManager")
 	
 func _ready():
+	var puzzle_pos = position / 104
 	# Assuming the starting tile is at grid position (start_x, start_y)
-	var start_x = 2  # Example X coordinate of start tile (in grid space)
-	var start_y = 1  # Example Y coordinate of start tile (in grid space)
+	var start_x = puzzle_pos.x - 0.5  # Example X coordinate of start tile (in grid space)
+	var start_y = puzzle_pos.y - 0.5  # Example Y coordinate of start tile (in grid space)
 	# Tile size is known to be 104
 	var tile_size = 104
 	# Calculate the world position based on grid coordinates and tile size

@@ -11,6 +11,8 @@ var swipe_end_time = 0
 
 var tileMap: TileMap = null
 
+var currentLevelNum = 1
+
 @onready var player: Player = null
 signal player_position_changed(position: Vector2)
 
@@ -72,8 +74,9 @@ const levels = [
 	"res://scens/levels/level6.tscn",
 ]
 
-func loadLevel(level_i: int):
-	var tilemap_scene = load(levels[level_i])
+func loadLevel(level_num: int):
+	currentLevelNum = level_num
+	var tilemap_scene = load(levels[level_num - 1])
 	var tilemap_instance: TileMap = tilemap_scene.instantiate()
 	tilemap_instance.z_index = 0
 	tilemap_instance.y_sort_enabled = true
@@ -91,3 +94,13 @@ func loadLevel(level_i: int):
 	player.position = Vector2.ZERO
 	player.last_position = position
 	setPlayer(player)
+
+
+func toNextLevel():
+	tileMap.queue_free()
+	loadLevel(currentLevelNum + 1)
+	
+	
+func retryLevel():
+	tileMap.queue_free()
+	loadLevel(currentLevelNum)

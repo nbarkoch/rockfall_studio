@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://txjmvgc4hs3g"]
+
+[ext_resource type="FontFile" uid="uid://botjmvxf504bt" path="res://fonts/JUNGLEFE.TTF" id="1_xraxr"]
+[ext_resource type="Texture2D" uid="uid://bm8nykf7wkvij" path="res://sprites/button_0.png" id="2_287xh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_usph1"]
+content_margin_left = 40.0
+content_margin_top = 20.0
+content_margin_right = 40.0
+content_margin_bottom = 20.0
+texture = ExtResource("2_287xh")
+
+[node name="Button" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -400.0
+offset_right = -65.0
+offset_bottom = -339.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.34902, 0.14902, 0, 0.654902)
+theme_override_fonts/font = ExtResource("1_xraxr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_usph1")
+text = "Next"
