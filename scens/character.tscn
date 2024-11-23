@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bmqxa77u6euy6" path="res://sprites/statues/0.png" id="2_xca6e"]
 [ext_resource type="Texture2D" uid="uid://btwb0frwwda58" path="res://sprites/env1/big_statue.png" id="3_gf5mi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6psh"]
-size = Vector2(100, 100)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2fp3"]
 atlas = ExtResource("2_xca6e")
 region = Rect2(0, 0, 105, 136)
@@ -35,6 +32,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6psh"]
+size = Vector2(90, 90)
+
 [node name="Character" type="Node2D"]
 y_sort_enabled = true
 
@@ -43,10 +43,6 @@ unique_name_in_owner = true
 z_index = 1
 safe_margin = 0.001
 script = ExtResource("1_mrx3g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody2D"]
-shape = SubResource("RectangleShape2D_w6psh")
-one_way_collision_margin = 0.0
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="PlayerBody2D"]
 z_as_relative = false
@@ -62,3 +58,7 @@ sprite_frames = SubResource("SpriteFrames_hxvyi")
 animation = &"new_animation"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody2D"]
+shape = SubResource("RectangleShape2D_w6psh")
+one_way_collision_margin = 0.0

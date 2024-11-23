@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgt36nw3546mi"]
 
 [ext_resource type="Script" path="res://scens/room_loader.gd" id="1_w60gt"]
-[ext_resource type="PackedScene" uid="uid://b8jlxpo5ceqvq" path="res://scens/ui/dialog_layer.tscn" id="2_x5bk4"]
+[ext_resource type="PackedScene" uid="uid://djjn82lts3gi5" path="res://scens/ui/env1_frame.tscn" id="2_ulb0x"]
 
 [node name="room" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_w60gt")
 
+[node name="EnvFrame" parent="." instance=ExtResource("2_ulb0x")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(256, 556)
 offset = Vector2(0, 90)
 zoom = Vector2(0.65, 0.65)
-
-[node name="CanvasLayer" parent="." instance=ExtResource("2_x5bk4")]

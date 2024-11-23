@@ -18,7 +18,6 @@ var played_sound = false
 func _ready():
 	last_position = position
 	locate()	
-	roomManager.setPlayer(self)
 	
 	
 # Function to set the direction and move the player

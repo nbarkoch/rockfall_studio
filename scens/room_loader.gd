@@ -5,7 +5,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	roomManager.loadLevel(5)
+	roomManager.loadLevel(1)
 	#if tileMap:
 		#roomManager.setTileMap(tileMap)
 

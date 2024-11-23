@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://djjn82lts3gi5"]
+
+[ext_resource type="Texture2D" uid="uid://ccvvu2l7ku0og" path="res://sprites/env1/edge_left_bottom.png" id="1_wjvyy"]
+[ext_resource type="Texture2D" uid="uid://dnsegne48axgm" path="res://sprites/env1/edge_right_bottom.png" id="2_6votd"]
+[ext_resource type="Texture2D" uid="uid://dw227um11i6ss" path="res://sprites/env1/edge_right_top.png" id="3_3k0jd"]
+[ext_resource type="Texture2D" uid="uid://cqe2weq137oli" path="res://sprites/env1/edge_left_top.png" id="4_aqi0j"]
+
+[node name="EnvFrame" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="leftbottom" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/leftbottom"]
+position = Vector2(200, -200)
+texture = ExtResource("1_wjvyy")
+
+[node name="rightbottom" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/rightbottom"]
+position = Vector2(-200, -200)
+texture = ExtResource("2_6votd")
+
+[node name="righttop" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/righttop"]
+position = Vector2(-200, 200)
+texture = ExtResource("3_3k0jd")
+
+[node name="lefttop" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/lefttop"]
+position = Vector2(200, 200)
+texture = ExtResource("4_aqi0j")

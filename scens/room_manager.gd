@@ -1,5 +1,6 @@
 extends Node2D
 
+
 var swipe_lengh = 40
 var startPos: Vector2
 var currPos: Vector2
@@ -60,9 +61,15 @@ func setPlayerPosition(position: Vector2):
 	player.last_position = position
 	emit_signal("player_position_changed", position)
 
-func finishLevel():
-	pass
+var dialogLayer: DialogLayer = null
 
+func finishLevel():
+	get_tree().paused = true
+	var dialog_layer_scene = load("res://scens/ui/dialog_layer.tscn")
+	var dialog_layer: DialogLayer = dialog_layer_scene.instantiate()
+	dialogLayer = dialog_layer
+	add_child(dialog_layer)  
+	dialog_layer.enter()
 
 
 const levels = [
@@ -104,3 +111,7 @@ func toNextLevel():
 func retryLevel():
 	tileMap.queue_free()
 	loadLevel(currentLevelNum)
+	
+func dialogAnimationExitFinished():
+	get_tree().paused = false
+	dialogLayer.queue_free()

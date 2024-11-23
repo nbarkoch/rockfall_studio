@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=30 format=3 uid="uid://d3wb8oipc6486"]
+[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://d3wb8oipc6486"]
 
 [ext_resource type="PackedScene" uid="uid://lu7cqdwupysa" path="res://scens/block_one_side_entry.tscn" id="1_fodwy"]
 [ext_resource type="PackedScene" uid="uid://bmqxukuivhc7m" path="res://scens/moveable_block.tscn" id="2_f7wxs"]
@@ -12,10 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://c1a361ple67sw" path="res://sprites/env1/floor_1.png" id="10_jpka1"]
 [ext_resource type="Texture2D" uid="uid://cvj2yxw6ov2o7" path="res://sprites/env1/wall_0.png" id="11_kw285"]
 [ext_resource type="Texture2D" uid="uid://cl66ht0m1n6yx" path="res://sprites/env1/floor_0.png" id="12_xsvn1"]
-[ext_resource type="Texture2D" uid="uid://cirjt4yi6hjs1" path="res://sprites/env1/left_0.png" id="13_jtkhu"]
-[ext_resource type="Texture2D" uid="uid://bjr3638kby0ua" path="res://sprites/env1/right_0.png" id="14_ubwdl"]
-[ext_resource type="Texture2D" uid="uid://rfji4pab5nsg" path="res://sprites/env1/up_0.png" id="15_x73xc"]
-[ext_resource type="Texture2D" uid="uid://bek7gjlne0wam" path="res://sprites/env1/down_0.png" id="16_t247v"]
 [ext_resource type="Texture2D" uid="uid://2i0x07ydsp3n" path="res://sprites/env1/wall_1.png" id="17_gprt1"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7w52b"]
@@ -138,22 +134,6 @@ texture_region_size = Vector2i(104, 104)
 1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:5/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ok2oi"]
-texture = ExtResource("13_jtkhu")
-texture_region_size = Vector2i(104, 104)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvyf4"]
-texture = ExtResource("14_ubwdl")
-texture_region_size = Vector2i(104, 104)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ett6f"]
-texture = ExtResource("15_x73xc")
-texture_region_size = Vector2i(104, 104)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6eomn"]
-texture = ExtResource("16_t247v")
-texture_region_size = Vector2i(104, 104)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n5hen"]
 texture = ExtResource("17_gprt1")
 texture_region_size = Vector2i(104, 104)
@@ -168,10 +148,6 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_08q4a")
 sources/3 = SubResource("TileSetAtlasSource_irfgx")
 sources/4 = SubResource("TileSetAtlasSource_ul57m")
-sources/5 = SubResource("TileSetAtlasSource_ok2oi")
-sources/6 = SubResource("TileSetAtlasSource_tvyf4")
-sources/7 = SubResource("TileSetAtlasSource_ett6f")
-sources/8 = SubResource("TileSetAtlasSource_6eomn")
 sources/9 = SubResource("TileSetAtlasSource_n5hen")
 sources/10 = SubResource("TileSetAtlasSource_as1i1")
 sources/11 = SubResource("TileSetAtlasSource_1na55")
