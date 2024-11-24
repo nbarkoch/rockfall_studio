@@ -32,12 +32,12 @@ func _process(delta):
 
 
 func on_player_position_changed(player_position: Vector2):
-	
+	print('block_position', position)
 	var block_position = position
 	var player_about_to_do = Vector2.ZERO
 	if abs(block_position.y - player_position.y) < tile_size:
-		player_about_to_do = Vector2.RIGHT if block_position.x - player_position.x else Vector2.LEFT
+		player_about_to_do = Vector2.RIGHT if block_position.x - player_position.x >= 0 else Vector2.LEFT
 	if abs(block_position.x - player_position.x) < tile_size:
-		player_about_to_do = Vector2.DOWN if block_position.y - player_position.y else Vector2.UP
+		player_about_to_do = Vector2.DOWN if block_position.y - player_position.y >= 0 else Vector2.UP
 	# Enable or disable collision based on the direction
 	should_disable_collision = (player_about_to_do == allowed_direction)

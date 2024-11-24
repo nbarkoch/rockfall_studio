@@ -1,13 +1,16 @@
-[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://d3wb8oipc6486"]
+[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://d3wb8oipc6486"]
 
-[ext_resource type="PackedScene" uid="uid://lu7cqdwupysa" path="res://scens/block_one_side_entry.tscn" id="1_fodwy"]
+[ext_resource type="PackedScene" uid="uid://cl08viscp0gjb" path="res://scens/blocks/up_entry_floor.tscn" id="1_wkjqt"]
 [ext_resource type="PackedScene" uid="uid://bmqxukuivhc7m" path="res://scens/moveable_block.tscn" id="2_f7wxs"]
 [ext_resource type="PackedScene" uid="uid://c0g1rvb0fn4c0" path="res://scens/block.tscn" id="3_8kxm3"]
 [ext_resource type="PackedScene" uid="uid://c5huhaj32batm" path="res://scens/block_with_plants.tscn" id="4_maji8"]
 [ext_resource type="PackedScene" uid="uid://buyjca2gf76b4" path="res://scens/starting_point_floor.tscn" id="5_r0dal"]
 [ext_resource type="PackedScene" uid="uid://dfu0ci1hircml" path="res://scens/finish_area.tscn" id="6_r18yw"]
 [ext_resource type="Texture2D" uid="uid://brbmgq3u8xcbp" path="res://sprites/block.png" id="7_i2ke3"]
+[ext_resource type="PackedScene" uid="uid://dac5oo4cn3tv1" path="res://scens/blocks/down_entry_floor.tscn" id="7_vghkl"]
+[ext_resource type="PackedScene" uid="uid://dt7w7ihqyef3i" path="res://scens/blocks/left_entry_floor.tscn" id="8_m5j8f"]
 [ext_resource type="Texture2D" uid="uid://bqs8i7g8ejbce" path="res://sprites/env1/wall_2.png" id="8_vl122"]
+[ext_resource type="PackedScene" uid="uid://ijar0kv7sbhb" path="res://scens/blocks/right_entry_floor.tscn" id="9_1ti3j"]
 [ext_resource type="Texture2D" uid="uid://c8wbk2fqsny3" path="res://sprites/env1/wall_3.png" id="9_aqpdc"]
 [ext_resource type="Texture2D" uid="uid://c1a361ple67sw" path="res://sprites/env1/floor_1.png" id="10_jpka1"]
 [ext_resource type="Texture2D" uid="uid://cvj2yxw6ov2o7" path="res://sprites/env1/wall_0.png" id="11_kw285"]
@@ -15,12 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://2i0x07ydsp3n" path="res://sprites/env1/wall_1.png" id="17_gprt1"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7w52b"]
-scenes/1/scene = ExtResource("1_fodwy")
 scenes/2/scene = ExtResource("2_f7wxs")
 scenes/3/scene = ExtResource("3_8kxm3")
 scenes/4/scene = ExtResource("4_maji8")
 scenes/5/scene = ExtResource("5_r0dal")
 scenes/6/scene = ExtResource("6_r18yw")
+scenes/7/scene = ExtResource("7_vghkl")
+scenes/8/scene = ExtResource("8_m5j8f")
+scenes/9/scene = ExtResource("9_1ti3j")
+scenes/10/scene = ExtResource("1_wkjqt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08q4a"]
 texture = ExtResource("7_i2ke3")
