@@ -58,6 +58,7 @@ animations = [{
 size = Vector2(104, 104)
 
 [node name="LeftEntryFloor" type="Node2D"]
+z_index = -1
 script = ExtResource("1_f4b5b")
 direction = "LEFT"
 

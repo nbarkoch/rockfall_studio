@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://d3wb8oipc6486"]
+[gd_resource type="TileSet" load_steps=26 format=3 uid="uid://d3wb8oipc6486"]
 
 [ext_resource type="PackedScene" uid="uid://cl08viscp0gjb" path="res://scens/blocks/up_entry_floor.tscn" id="1_wkjqt"]
+[ext_resource type="PackedScene" uid="uid://bud1hb0e04xym" path="res://scens/blocks/moving_statue.tscn" id="2_6fflv"]
 [ext_resource type="PackedScene" uid="uid://bmqxukuivhc7m" path="res://scens/moveable_block.tscn" id="2_f7wxs"]
 [ext_resource type="PackedScene" uid="uid://c0g1rvb0fn4c0" path="res://scens/block.tscn" id="3_8kxm3"]
 [ext_resource type="PackedScene" uid="uid://c5huhaj32batm" path="res://scens/block_with_plants.tscn" id="4_maji8"]
@@ -27,6 +28,7 @@ scenes/7/scene = ExtResource("7_vghkl")
 scenes/8/scene = ExtResource("8_m5j8f")
 scenes/9/scene = ExtResource("9_1ti3j")
 scenes/10/scene = ExtResource("1_wkjqt")
+scenes/11/scene = ExtResource("2_6fflv")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08q4a"]
 texture = ExtResource("7_i2ke3")

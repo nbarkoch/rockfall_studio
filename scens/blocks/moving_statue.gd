@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-class_name Player
 
 @onready var roomManager = get_node("/root/RoomManager")
 
@@ -40,16 +39,12 @@ func _physics_process(delta):
 	if current_speed == 0:
 		position.x = last_position.x
 		position.y = last_position.y
-
+		
 	if current_speed != 0:
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
-			
-			if 		collider is TileMap or\
-					collider is StaticBody2D or\
-					collider is CharacterBody2D:
-				
+			if collider is TileMap or collider is StaticBody2D:
 				var collision_normal = collision.get_normal()
 				if current_direction.dot(collision_normal) <= -0.95:
 					block()
@@ -69,9 +64,8 @@ func _physics_process(delta):
 			played_sound = true
 			audioStreamPlayer.stream = preload("res://sounds/drag.ogg")
 			audioStreamPlayer.play()
+		move_and_slide()	
 			
-			
-		move_and_slide()
 	else:
 		locate()		
 	
@@ -103,10 +97,17 @@ func block():
 	velocity = Vector2.ZERO
 	position = last_position
 	current_speed = 0
-	roomManager.setPlayerPosition(position)
 	audioStreamPlayer.stop()
 	
 func locate():
 	var half_size = round( (tile_size/ 2))
 	position.x = round((position.x) / half_size) * half_size
 	position.y = round((position.y) / half_size) * half_size
+
+
+func _on_area_2d_body_entered(body):
+	if body is Player:
+		 # Calculate the opposite direction
+		var player_position = body.position
+		var opposite_direction = (position - player_position).normalized()
+		move(opposite_direction, MIN_SPEED)

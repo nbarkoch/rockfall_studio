@@ -58,6 +58,7 @@ animations = [{
 size = Vector2(104, 104)
 
 [node name="DownEntryFloor" type="Node2D"]
+z_index = -1
 script = ExtResource("1_r5ygk")
 direction = "DOWN"
 

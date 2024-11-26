@@ -81,6 +81,9 @@ const levels = [
 	"res://scens/levels/level6.tscn",
 	"res://scens/levels/level7.tscn",
 	"res://scens/levels/level8.tscn",
+	"res://scens/levels/level9.tscn",
+	"res://scens/levels/level10.tscn",
+	"res://scens/levels/level11.tscn",
 ]
 
 func loadLevel(level_num: int):

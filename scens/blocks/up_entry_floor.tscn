@@ -58,6 +58,7 @@ animations = [{
 size = Vector2(104, 104)
 
 [node name="UpEntryFloor" type="Node2D"]
+z_index = -1
 script = ExtResource("1_17lhp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
