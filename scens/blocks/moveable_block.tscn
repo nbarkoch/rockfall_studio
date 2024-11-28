@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmqxukuivhc7m"]
 
-[ext_resource type="Script" path="res://scens/blocks/moveable_block.gd" id="1_gj147"]
-[ext_resource type="Texture2D" uid="uid://r67ebqxtr13y" path="res://sprites/env1/wall_01_shadow.png" id="2_u3vub"]
-[ext_resource type="Texture2D" uid="uid://ce7yfb8vgq07v" path="res://sprites/env1/moveable0.png" id="3_cs4dy"]
+[ext_resource type="Script" path="res://scens/blocks/moveable_block.gd" id="1_clsoe"]
+[ext_resource type="Texture2D" uid="uid://r67ebqxtr13y" path="res://sprites/env1/wall_01_shadow.png" id="2_j0x0t"]
+[ext_resource type="Texture2D" uid="uid://ce7yfb8vgq07v" path="res://sprites/env1/moveable0.png" id="3_35oc2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tqh0h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3lgaa"]
-atlas = ExtResource("3_cs4dy")
+atlas = ExtResource("3_35oc2")
 region = Rect2(0, 0, 333, 401)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_drufw"]
@@ -24,15 +24,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vnks"]
 size = Vector2(100, 100)
 
-[node name="Moveableblock" type="RigidBody2D"]
+[node name="Moveableblock" type="RigidBody2D" groups=["Blocks"]]
 physics_material_override = SubResource("PhysicsMaterial_tqh0h")
 lock_rotation = true
-script = ExtResource("1_gj147")
+script = ExtResource("1_clsoe")
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 position = Vector2(-6.5, -15)
 scale = Vector2(0.295053, 0.322124)
-texture = ExtResource("2_u3vub")
+texture = ExtResource("2_j0x0t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scens/floors/starting_point_floor.gd" id="1_4kwv6"]
 [ext_resource type="Texture2D" uid="uid://q7lub864chuj" path="res://sprites/env1/start_point.png" id="2_fpgh1"]
 
-[node name="StartingPointBlock" type="Node2D"]
+[node name="StartingPointBlock" type="Node2D" groups=["Floors"]]
 z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_4kwv6")

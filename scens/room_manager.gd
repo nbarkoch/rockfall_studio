@@ -97,12 +97,11 @@ func loadLevel(level_num: int):
 	setTileMap((tilemap_instance))
 	
 	var player_scene = load("res://scens/player_stuff/character.tscn")
-	var character = player_scene.instantiate()
-	var player = character.get_node('PlayerBody2D')
+	var player = player_scene.instantiate()
 	player.z_index = 1
 	player.y_sort_enabled = true
 	player.z_as_relative = true
-	tilemap_instance.add_child(character)
+	tilemap_instance.add_child(player)
 	player.position = Vector2.ZERO
 	player.last_position = position
 	setPlayer(player)

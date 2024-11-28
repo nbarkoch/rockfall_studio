@@ -1,22 +1,22 @@
 [gd_scene load_steps=9 format=3 uid="uid://ijar0kv7sbhb"]
 
-[ext_resource type="Script" path="res://scens/floors/block_one_side_entry.gd" id="1_6a0bq"]
-[ext_resource type="Texture2D" uid="uid://cpypb5rawx7ui" path="res://sprites/env1/floor_arrow_0.png" id="2_4c16h"]
+[ext_resource type="Script" path="res://scens/floors/block_one_side_entry.gd" id="1_bsxs5"]
+[ext_resource type="Texture2D" uid="uid://cpypb5rawx7ui" path="res://sprites/env1/floor_arrow_0.png" id="2_r5d8s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vi0qh"]
-atlas = ExtResource("2_4c16h")
+atlas = ExtResource("2_r5d8s")
 region = Rect2(104, 0, 104, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_offd5"]
-atlas = ExtResource("2_4c16h")
+atlas = ExtResource("2_r5d8s")
 region = Rect2(0, 0, 104, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_be3xk"]
-atlas = ExtResource("2_4c16h")
+atlas = ExtResource("2_r5d8s")
 region = Rect2(0, 104, 104, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xl3b1"]
-atlas = ExtResource("2_4c16h")
+atlas = ExtResource("2_r5d8s")
 region = Rect2(104, 104, 104, 104)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3amj3"]
@@ -57,8 +57,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqgcq"]
 size = Vector2(104, 104)
 
-[node name="RightEntryFloor" type="Node2D"]
-script = ExtResource("1_6a0bq")
+[node name="RightEntryFloor" type="Node2D" groups=["Floors"]]
+script = ExtResource("1_bsxs5")
 direction = "RIGHT"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

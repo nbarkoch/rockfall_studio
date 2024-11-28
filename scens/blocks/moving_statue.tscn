@@ -25,7 +25,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MovingStatue" type="CharacterBody2D"]
+[node name="MovingStatue" type="CharacterBody2D" groups=["Blocks"]]
 z_index = 1
 script = ExtResource("1_h6axt")
 

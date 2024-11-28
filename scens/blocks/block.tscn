@@ -1,18 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0g1rvb0fn4c0"]
+[gd_scene load_steps=9 format=3 uid="uid://c0g1rvb0fn4c0"]
 
-[ext_resource type="Texture2D" uid="uid://r67ebqxtr13y" path="res://sprites/env1/wall_01_shadow.png" id="1_4tbo1"]
-[ext_resource type="Texture2D" uid="uid://cikye7fwol5hp" path="res://sprites/env1/wall_01.png" id="1_w10o1"]
-[ext_resource type="Texture2D" uid="uid://bum8kobu2fbip" path="res://sprites/env1/wall_02.png" id="2_q8uue"]
+[ext_resource type="Script" path="res://scens/blocks/block.gd" id="1_2w20r"]
+[ext_resource type="Texture2D" uid="uid://r67ebqxtr13y" path="res://sprites/env1/wall_01_shadow.png" id="2_4vrv0"]
+[ext_resource type="Texture2D" uid="uid://cikye7fwol5hp" path="res://sprites/env1/wall_01.png" id="3_hyp2k"]
+[ext_resource type="Texture2D" uid="uid://bum8kobu2fbip" path="res://sprites/env1/wall_02.png" id="4_xhnhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21cwt"]
 size = Vector2(104, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5lfm"]
-atlas = ExtResource("1_w10o1")
+atlas = ExtResource("3_hyp2k")
 region = Rect2(0, 0, 333, 401)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4unx4"]
-atlas = ExtResource("2_q8uue")
+atlas = ExtResource("4_xhnhn")
 region = Rect2(0, 0, 333, 401)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovnjv"]
@@ -32,13 +33,14 @@ animations = [{
 [node name="Block" type="Node2D"]
 y_sort_enabled = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Blocks"]]
 y_sort_enabled = true
+script = ExtResource("1_2w20r")
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(-6.5, -15)
 scale = Vector2(0.295053, 0.322124)
-texture = ExtResource("1_4tbo1")
+texture = ExtResource("2_4vrv0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_21cwt")
