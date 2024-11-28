@@ -1,12 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://buyjca2gf76b4"]
+[gd_scene load_steps=4 format=3 uid="uid://buyjca2gf76b4"]
 
 [ext_resource type="Script" path="res://scens/floors/starting_point_floor.gd" id="1_4kwv6"]
 [ext_resource type="Texture2D" uid="uid://q7lub864chuj" path="res://sprites/env1/start_point.png" id="2_fpgh1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_te0d4"]
+size = Vector2(104, 104)
 
 [node name="StartingPointBlock" type="Node2D" groups=["Floors"]]
 z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_4kwv6")
+
+[node name="FloorStaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorStaticBody2D"]
+shape = SubResource("RectangleShape2D_te0d4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.8147e-06, 7.62939e-06)

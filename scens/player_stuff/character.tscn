@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2fbngli1h5bc"]
+[gd_scene load_steps=10 format=3 uid="uid://c2fbngli1h5bc"]
 
 [ext_resource type="Script" path="res://scens/player_stuff/player.gd" id="1_mrx3g"]
 [ext_resource type="Texture2D" uid="uid://cauulm0fathag" path="res://sprites/env1/statue_shadow.png" id="2_t8ndx"]
@@ -35,6 +35,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b43k8"]
+
 [node name="PlayerBody2D" type="CharacterBody2D" groups=["Blocks"]]
 z_index = 1
 script = ExtResource("1_mrx3g")
@@ -57,3 +59,10 @@ sprite_frames = SubResource("SpriteFrames_hxvyi")
 animation = &"new_animation"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_b43k8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

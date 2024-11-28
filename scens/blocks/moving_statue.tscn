@@ -7,9 +7,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oahhc"]
 size = Vector2(90, 90)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4y0ag"]
-size = Vector2(96, 98)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_iaeop"]
 atlas = ExtResource("2_d5pr4")
 region = Rect2(0, 0, 231, 342)
@@ -25,6 +22,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4y0ag"]
+size = Vector2(96, 98)
+
 [node name="MovingStatue" type="CharacterBody2D" groups=["Blocks"]]
 z_index = 1
 script = ExtResource("1_h6axt")
@@ -32,12 +32,6 @@ script = ExtResource("1_h6axt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oahhc")
 one_way_collision_margin = 0.0
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_4y0ag")
 
 [node name="ShadowSprite2D" type="Sprite2D" parent="."]
 z_as_relative = false
@@ -53,5 +47,11 @@ sprite_frames = SubResource("SpriteFrames_g7o71")
 animation = &"standard"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_4y0ag")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

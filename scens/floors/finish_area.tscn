@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfu0ci1hircml"]
+[gd_scene load_steps=7 format=3 uid="uid://dfu0ci1hircml"]
 
 [ext_resource type="Script" path="res://scens/floors/finish_area.gd" id="1_i4lts"]
 [ext_resource type="Texture2D" uid="uid://cn41agjy1ck11" path="res://sprites/env1/end_point.png" id="2_sla75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oc7ng"]
+size = Vector2(104, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymln0"]
 atlas = ExtResource("2_sla75")
@@ -25,6 +28,13 @@ size = Vector2(40, 38)
 z_index = -1
 y_sort_enabled = true
 script = ExtResource("1_i4lts")
+
+[node name="FloorStaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorStaticBody2D"]
+shape = SubResource("RectangleShape2D_oc7ng")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.62939e-06, 0)

@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dac5oo4cn3tv1"]
+[gd_scene load_steps=10 format=3 uid="uid://dac5oo4cn3tv1"]
 
 [ext_resource type="Script" path="res://scens/floors/block_one_side_entry.gd" id="1_8ob6p"]
 [ext_resource type="Texture2D" uid="uid://cpypb5rawx7ui" path="res://sprites/env1/floor_arrow_0.png" id="2_t4146"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdlyy"]
+size = Vector2(104, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vi0qh"]
 atlas = ExtResource("2_t4146")
@@ -61,6 +64,13 @@ size = Vector2(104, 104)
 z_index = -1
 script = ExtResource("1_8ob6p")
 direction = "DOWN"
+
+[node name="FloorStaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorStaticBody2D"]
+shape = SubResource("RectangleShape2D_fdlyy")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

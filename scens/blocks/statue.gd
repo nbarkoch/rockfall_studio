@@ -6,8 +6,13 @@ class_name Statue
 
 @onready var audioStreamPlayer = $AudioStreamPlayer
 @onready var shadowSprite = $ShadowSprite2D
-@onready var statueSprite = $AnimatedSprite2D
+@onready var sprite2D = $AnimatedSprite2D
 @onready var collisionShape = $CollisionShape2D
+
+@onready var area2d = $Area2D
+@onready var area2dCollisionShape = $Area2D/CollisionShape2D
+
+
 
 const MIN_SPEED = 1000
 var current_speed = 0
@@ -108,3 +113,13 @@ func locate():
 	var half_size = round( (tile_size/ 2))
 	position.x = round((position.x) / half_size) * half_size
 	position.y = round((position.y) / half_size) * half_size
+
+
+func _on_area_2d_body_entered(body):
+	if current_speed == 0 and body != self and body is Statue and\
+			 collision_layer == body.collision_layer and\
+			collision_mask == body.collision_mask:
+		 # Calculate the opposite direction
+		var player_position = body.position
+		var opposite_direction = (position - player_position).normalized()
+		move(opposite_direction, MIN_SPEED)
