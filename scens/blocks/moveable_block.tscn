@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmqxukuivhc7m"]
 
-[ext_resource type="Script" path="res://scens/moveable_block.gd" id="1_gj147"]
+[ext_resource type="Script" path="res://scens/blocks/moveable_block.gd" id="1_gj147"]
 [ext_resource type="Texture2D" uid="uid://r67ebqxtr13y" path="res://sprites/env1/wall_01_shadow.png" id="2_u3vub"]
 [ext_resource type="Texture2D" uid="uid://ce7yfb8vgq07v" path="res://sprites/env1/moveable0.png" id="3_cs4dy"]
 

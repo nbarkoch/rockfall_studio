@@ -1,15 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfu0ci1hircml"]
+[gd_scene load_steps=6 format=3 uid="uid://dfu0ci1hircml"]
 
-[ext_resource type="Script" path="res://finish_area.gd" id="1_8434p"]
-[ext_resource type="Texture2D" uid="uid://cn41agjy1ck11" path="res://sprites/env1/end_point.png" id="2_mwtte"]
-[ext_resource type="Texture2D" uid="uid://q7lub864chuj" path="res://sprites/env1/start_point.png" id="2_wpp42"]
+[ext_resource type="Script" path="res://scens/floors/finish_area.gd" id="1_i4lts"]
+[ext_resource type="Texture2D" uid="uid://cn41agjy1ck11" path="res://sprites/env1/end_point.png" id="2_sla75"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymln0"]
-atlas = ExtResource("2_mwtte")
-region = Rect2(0, 0, 206, 206)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mcbrl"]
-atlas = ExtResource("2_wpp42")
+atlas = ExtResource("2_sla75")
 region = Rect2(0, 0, 206, 206)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c0gbm"]
@@ -17,9 +12,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ymln0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mcbrl")
 }],
 "loop": true,
 "name": &"default",
@@ -32,7 +24,7 @@ size = Vector2(40, 38)
 [node name="FinishArea2D" type="Area2D"]
 z_index = -1
 y_sort_enabled = true
-script = ExtResource("1_8434p")
+script = ExtResource("1_i4lts")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.62939e-06, 0)

@@ -5,6 +5,9 @@ class_name Player
 @onready var roomManager = get_node("/root/RoomManager")
 
 @onready var audioStreamPlayer = $AudioStreamPlayer
+@onready var shadowSprite = $ShadowSprite2D
+@onready var statueSprite = $AnimatedSprite2D
+@onready var collisionShape = $CollisionShape2D
 
 const MIN_SPEED = 1000
 var current_speed = 0
@@ -14,6 +17,7 @@ var move_from_p : Vector2
 var time_elapsed : float = 0.0
 var tile_size = 104
 var played_sound = false
+var got_stuck = false
 
 func _ready():
 	last_position = position
@@ -22,7 +26,7 @@ func _ready():
 	
 # Function to set the direction and move the player
 func move(direction: Vector2, speed: float):
-	if current_speed == 0:
+	if current_speed == 0 and not got_stuck:
 		time_elapsed = 0.0
 		move_from_p = position
 		last_position = position
@@ -45,11 +49,9 @@ func _physics_process(delta):
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
-			
 			if 		collider is TileMap or\
 					collider is StaticBody2D or\
 					collider is CharacterBody2D:
-				
 				var collision_normal = collision.get_normal()
 				if current_direction.dot(collision_normal) <= -0.95:
 					block()
@@ -110,3 +112,4 @@ func locate():
 	var half_size = round( (tile_size/ 2))
 	position.x = round((position.x) / half_size) * half_size
 	position.y = round((position.y) / half_size) * half_size
+

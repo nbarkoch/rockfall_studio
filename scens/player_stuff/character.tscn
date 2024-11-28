@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c2fbngli1h5bc"]
 
-[ext_resource type="Script" path="res://scens/player.gd" id="1_mrx3g"]
+[ext_resource type="Script" path="res://scens/player_stuff/player.gd" id="1_mrx3g"]
 [ext_resource type="Texture2D" uid="uid://cauulm0fathag" path="res://sprites/env1/statue_shadow.png" id="2_t8ndx"]
 [ext_resource type="Texture2D" uid="uid://bmqxa77u6euy6" path="res://sprites/statues/0.png" id="2_xca6e"]
 [ext_resource type="Texture2D" uid="uid://btwb0frwwda58" path="res://sprites/env1/big_statue.png" id="3_gf5mi"]
@@ -52,7 +52,7 @@ scale = Vector2(0.286219, 0.254867)
 texture = ExtResource("2_t8ndx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerBody2D"]
-position = Vector2(-4.76837e-07, -17)
+position = Vector2(0, -17)
 scale = Vector2(0.292398, 0.293217)
 sprite_frames = SubResource("SpriteFrames_hxvyi")
 animation = &"new_animation"

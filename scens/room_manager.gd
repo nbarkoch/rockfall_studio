@@ -96,7 +96,7 @@ func loadLevel(level_num: int):
 	add_child(tilemap_instance)  
 	setTileMap((tilemap_instance))
 	
-	var player_scene = load("res://scens/character.tscn")
+	var player_scene = load("res://scens/player_stuff/character.tscn")
 	var character = player_scene.instantiate()
 	var player = character.get_node('PlayerBody2D')
 	player.z_index = 1
