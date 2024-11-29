@@ -1,6 +1,10 @@
 extends RigidBody2D
 
 var tile_size = 104
+
+@onready var shadowSprite = $ShadowSprite2D
+@onready var sprite2D = $AnimatedSprite2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gravity_scale = 0
@@ -25,8 +29,10 @@ func is_moving():
 		stuck_timer = 0.0
 	stuck_timer += get_process_delta_time()
 	return true
-		
 
+func setPosition(newPosition: Vector2):
+	position = newPosition
+	
 func locate():
 	linear_velocity = linear_velocity / 2
 	var half_size = round( (tile_size/ 2))

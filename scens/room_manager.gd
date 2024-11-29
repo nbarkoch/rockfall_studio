@@ -57,8 +57,7 @@ func get_player_position():
 	
 	
 func setPlayerPosition(position: Vector2):
-	player.position = position
-	player.last_position = position
+	player.setPosition(position)
 	emit_signal("player_position_changed", position)
 
 var dialogLayer: DialogLayer = null
@@ -84,6 +83,15 @@ const levels = [
 	"res://scens/levels/level9.tscn",
 	"res://scens/levels/level10.tscn",
 	"res://scens/levels/level11.tscn",
+	"res://scens/levels/level12.tscn",
+	"res://scens/levels/level13.tscn",
+	"res://scens/levels/level14.tscn",
+	"res://scens/levels/level15.tscn",
+	"res://scens/levels/level16.tscn",
+	"res://scens/levels/level17.tscn",
+	"res://scens/levels/level18.tscn",
+	"res://scens/levels/level19.tscn",
+	"res://scens/levels/level20.tscn",
 ]
 
 func loadLevel(level_num: int):

@@ -15,6 +15,7 @@ class_name Statue
 
 
 const MIN_SPEED = 1000
+const MAX_SPEED = 10000
 var current_speed = 0
 var current_direction = Vector2.ZERO
 var last_position : Vector2
@@ -35,7 +36,7 @@ func move(direction: Vector2, speed: float):
 		move_from_p = position
 		last_position = position
 		current_direction = direction
-		current_speed = max(speed, MIN_SPEED)
+		current_speed = min(max(speed, MIN_SPEED), MAX_SPEED)
 		played_sound = false
 		
 	
@@ -53,7 +54,7 @@ func _physics_process(delta):
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
-			if 		collider is TileMap or\
+			if 	collider is TileMap or\
 					collider is StaticBody2D or\
 					collider is Statue:
 				var collision_normal = collision.get_normal()
@@ -73,11 +74,12 @@ func _physics_process(delta):
 		if not played_sound and (move_from_p - position).length() > 30:
 			played_sound = true
 			audioStreamPlayer.stream = preload("res://sounds/drag.ogg")
-			audioStreamPlayer.play()
-		move_and_slide()	
+			audioStreamPlayer.play()	
 			
 	else:
-		locate()		
+		locate()	
+	
+	move_and_slide()	
 	
 	last_position.x = position.x
 	last_position.y = position.y
@@ -109,11 +111,15 @@ func block():
 	current_speed = 0
 	audioStreamPlayer.stop()
 	
+	
 func locate():
 	var half_size = round( (tile_size/ 2))
 	position.x = round((position.x) / half_size) * half_size
 	position.y = round((position.y) / half_size) * half_size
 
+func setPosition(newPosition: Vector2):
+	last_position = newPosition
+	position = newPosition
 
 func _on_area_2d_body_entered(body):
 	if current_speed == 0 and body != self and body is Statue and\
@@ -123,3 +129,4 @@ func _on_area_2d_body_entered(body):
 		var player_position = body.position
 		var opposite_direction = (position - player_position).normalized()
 		move(opposite_direction, MIN_SPEED)
+		
