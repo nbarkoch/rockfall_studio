@@ -100,7 +100,7 @@ shape = SubResource("RectangleShape2D_gji5p")
 libraries = {
 "": SubResource("AnimationLibrary_wvqfi")
 }
-speed_scale = 8.0
+speed_scale = 7.0
 
 [node name="BlockHandler" type="Node2D" parent="."]
 z_as_relative = false

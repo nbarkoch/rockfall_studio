@@ -4,11 +4,7 @@ class_name Player
 
 	
 func block():
-	current_direction = Vector2.ZERO
-	velocity = Vector2.ZERO
-	position = last_position
-	current_speed = 0
+	super.block()
 	roomManager.setPlayerPosition(position)
-	audioStreamPlayer.stop()
 
 

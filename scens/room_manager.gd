@@ -110,8 +110,7 @@ func loadLevel(level_num: int):
 	player.y_sort_enabled = true
 	player.z_as_relative = true
 	tilemap_instance.add_child(player)
-	player.position = Vector2.ZERO
-	player.last_position = position
+	player.setPosition(Vector2.ZERO)
 	setPlayer(player)
 
 

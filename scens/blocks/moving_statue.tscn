@@ -23,7 +23,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4y0ag"]
-size = Vector2(96, 98)
+size = Vector2(105, 105)
 
 [node name="MovingStatue" type="CharacterBody2D" groups=["Blocks"]]
 z_index = 1

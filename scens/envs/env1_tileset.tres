@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dotxlhw0j3u43" path="res://scens/floors/redirect_down_to_left.tscn" id="1_chu8t"]
 [ext_resource type="PackedScene" uid="uid://bud1hb0e04xym" path="res://scens/blocks/moving_statue.tscn" id="2_1u55r"]
 [ext_resource type="PackedScene" uid="uid://b1a7q4cbi10v4" path="res://scens/floors/hole_area.tscn" id="3_3526b"]
-[ext_resource type="PackedScene" uid="uid://bmqxukuivhc7m" path="res://scens/blocks/moveable_block.tscn" id="4_7j3hx"]
 [ext_resource type="PackedScene" uid="uid://daoi35av5ow0y" path="res://scens/floors/redirect_down_to_right.tscn" id="5_3ea2s"]
 [ext_resource type="PackedScene" uid="uid://c0g1rvb0fn4c0" path="res://scens/blocks/block.tscn" id="5_nyv1t"]
 [ext_resource type="PackedScene" uid="uid://c5huhaj32batm" path="res://scens/blocks/block_with_plants.tscn" id="6_si35j"]
@@ -19,11 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://bkbbufa7bs5rg" path="res://scens/floors/redirect_up_to_left.tscn" id="10_w4eax"]
 [ext_resource type="PackedScene" uid="uid://c65l2tfs3t1he" path="res://scens/floors/redirect_up_to_right.tscn" id="11_tgdjm"]
 [ext_resource type="PackedScene" uid="uid://ijar0kv7sbhb" path="res://scens/floors/right_entry_floor.tscn" id="11_vmkm5"]
+[ext_resource type="PackedScene" uid="uid://codo7mgck2bi1" path="res://scens/blocks/moving_block.tscn" id="12_i1b2r"]
 [ext_resource type="Texture2D" uid="uid://c1a361ple67sw" path="res://sprites/env1/floor_1.png" id="15_3cim0"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7w52b"]
 scenes/1/scene = ExtResource("1_chu8t")
-scenes/2/scene = ExtResource("4_7j3hx")
+scenes/2/scene = ExtResource("12_i1b2r")
 scenes/3/scene = ExtResource("5_nyv1t")
 scenes/4/scene = ExtResource("6_si35j")
 scenes/5/scene = ExtResource("7_h5fuq")
