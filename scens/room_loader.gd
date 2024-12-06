@@ -5,9 +5,7 @@ extends Node2D
 @onready var retryAnimationPlayer = $CanvasLayer/RetryButton/AnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	roomManager.loadLevel(13)
-	#if tileMap:
-		#roomManager.setTileMap(tileMap)
+	roomManager.loadLevel(3)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

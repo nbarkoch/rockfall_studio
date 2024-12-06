@@ -52,6 +52,7 @@ offset = Vector2(0, 90)
 zoom = Vector2(0.65, 0.65)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 8
 
 [node name="RetryButton" type="TextureButton" parent="CanvasLayer"]

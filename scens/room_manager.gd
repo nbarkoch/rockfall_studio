@@ -117,11 +117,15 @@ func loadLevel(level_num: int):
 func toNextLevel():
 	tileMap.queue_free()
 	loadLevel(currentLevelNum + 1)
+	if dialogLayer != null:
+		dialogLayer.exit()
 	
 	
 func retryLevel():
 	tileMap.queue_free()
 	loadLevel(currentLevelNum)
+	if dialogLayer != null:
+		dialogLayer.exit()
 	
 func dialogAnimationExitFinished():
 	get_tree().paused = false

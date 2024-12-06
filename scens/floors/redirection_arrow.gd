@@ -47,19 +47,19 @@ func _ready():
 
 
 func _on_area_2d_body_entered(body):
-	if body.is_in_group("Blocks"):
+	if body is MovingBlock:
 		var body_velocity = body.velocity if body.has_method("get_velocity") else Vector2.ZERO
 		# Check if the body's velocity matches the allowed_direction[0]
 		if -body_velocity.normalized() == allowed_direction[0]:
 			# Change body's velocity to allowed_direction[1]
 			if body.has_method("set_velocity"):
 				body.set_velocity(allowed_direction[1] * body_velocity.length())
-			if body is Statue:
-				body.setPosition(position)
-				body.current_direction = allowed_direction[1]
+			body.setPosition(position)
+			body.locate()
+			body.current_direction = allowed_direction[1]
 			# Optional: Update the sprite frame or play an animation
 		animated_sprite.frame = 1
 		
 func _on_area_2d_body_exited(body):
-	if body.is_in_group("Blocks"):
+	if body is MovingBlock:
 		animated_sprite.frame = 0 

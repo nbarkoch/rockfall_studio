@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=23 format=3 uid="uid://d3wb8oipc6486"]
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://d3wb8oipc6486"]
 
 [ext_resource type="PackedScene" uid="uid://cl08viscp0gjb" path="res://scens/floors/up_entry_floor.tscn" id="1_3kyn8"]
 [ext_resource type="PackedScene" uid="uid://dotxlhw0j3u43" path="res://scens/floors/redirect_down_to_left.tscn" id="1_chu8t"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c65l2tfs3t1he" path="res://scens/floors/redirect_up_to_right.tscn" id="11_tgdjm"]
 [ext_resource type="PackedScene" uid="uid://ijar0kv7sbhb" path="res://scens/floors/right_entry_floor.tscn" id="11_vmkm5"]
 [ext_resource type="PackedScene" uid="uid://codo7mgck2bi1" path="res://scens/blocks/moving_block.tscn" id="12_i1b2r"]
+[ext_resource type="PackedScene" uid="uid://wfc3lik4y6yy" path="res://scens/floors/hole_area_withwall.tscn" id="13_i2hp2"]
 [ext_resource type="Texture2D" uid="uid://c1a361ple67sw" path="res://sprites/env1/floor_1.png" id="15_3cim0"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7w52b"]
@@ -41,6 +42,7 @@ scenes/16/scene = ExtResource("8_ixqof")
 scenes/17/scene = ExtResource("9_4r6nf")
 scenes/18/scene = ExtResource("10_w4eax")
 scenes/19/scene = ExtResource("11_tgdjm")
+scenes/20/scene = ExtResource("13_i2hp2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_16e7d"]
 texture = ExtResource("15_3cim0")

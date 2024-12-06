@@ -24,11 +24,9 @@ func _on_retry_button_pressed():
 
 func _on_next_animation_finished(anim_name):
 	roomManager.toNextLevel()
-	exit()
 
 func _on_retry_animation_finished(anim_name):
 	roomManager.retryLevel()
-	exit()
 
 
 func _on_dialog_finished(anim_name):

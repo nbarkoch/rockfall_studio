@@ -1,19 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1a7q4cbi10v4"]
+[gd_scene load_steps=13 format=3 uid="uid://ch3xqom1fhdo5"]
 
-[ext_resource type="Script" path="res://scens/floors/hole_area.gd" id="1_vx851"]
-[ext_resource type="Texture2D" uid="uid://dsjafmcx4oldj" path="res://sprites/env1/hole_2_big.png" id="2_wcs0f"]
-[ext_resource type="Texture2D" uid="uid://dq44pj1wk40pt" path="res://sprites/env1/hole_1_big.png" id="2_xsgqx"]
-[ext_resource type="Texture2D" uid="uid://us8sygfofeqm" path="res://sprites/env1/hole_0_front_big.png" id="3_ajimi"]
+[ext_resource type="Script" path="res://scens/floors/hole_area.gd" id="1_tdhv1"]
+[ext_resource type="Texture2D" uid="uid://dsjafmcx4oldj" path="res://sprites/env1/hole_2_big.png" id="2_iegjr"]
+[ext_resource type="Texture2D" uid="uid://dq44pj1wk40pt" path="res://sprites/env1/hole_1_big.png" id="3_f4y5f"]
+[ext_resource type="Texture2D" uid="uid://us8sygfofeqm" path="res://sprites/env1/hole_0_front_big.png" id="4_amkxw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qtux5"]
 size = Vector2(104, 104)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1j6k"]
-atlas = ExtResource("2_wcs0f")
+atlas = ExtResource("2_iegjr")
 region = Rect2(0, 0, 206, 206)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wyebp"]
-atlas = ExtResource("2_xsgqx")
+atlas = ExtResource("3_f4y5f")
 region = Rect2(0, 0, 206, 206)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bvwc"]
@@ -97,7 +97,7 @@ _data = {
 [node name="HoleArea2D" type="Area2D"]
 z_index = -2
 y_sort_enabled = true
-script = ExtResource("1_vx851")
+script = ExtResource("1_tdhv1")
 
 [node name="HoleArea2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -127,7 +127,7 @@ z_as_relative = false
 visible = false
 position = Vector2(-1.13249e-06, 45.5)
 scale = Vector2(0.504854, 0.541667)
-texture = ExtResource("3_ajimi")
+texture = ExtResource("4_amkxw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

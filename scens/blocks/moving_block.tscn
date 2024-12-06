@@ -1,21 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://codo7mgck2bi1"]
+[gd_scene load_steps=14 format=3 uid="uid://codo7mgck2bi1"]
 
 [ext_resource type="Script" path="res://scens/blocks/moving_block.gd" id="1_gcj47"]
 [ext_resource type="Texture2D" uid="uid://r67ebqxtr13y" path="res://sprites/env1/wall_01_shadow.png" id="2_1lvk5"]
+[ext_resource type="Texture2D" uid="uid://16oadhg05i8r" path="res://sprites/env1/moveable3.png" id="3_hw28y"]
+[ext_resource type="Texture2D" uid="uid://dx3w5xxojyush" path="res://sprites/env1/moveable1.png" id="3_hx8mp"]
+[ext_resource type="Texture2D" uid="uid://clv5yb878qipd" path="res://sprites/env1/moveable2.png" id="3_ovsto"]
 [ext_resource type="Texture2D" uid="uid://ce7yfb8vgq07v" path="res://sprites/env1/moveable0.png" id="3_yoiwy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40vhp"]
 size = Vector2(100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gindb"]
+atlas = ExtResource("3_hw28y")
+region = Rect2(0, 0, 333, 401)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkjv7"]
+atlas = ExtResource("3_hx8mp")
+region = Rect2(0, 0, 333, 401)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3lgaa"]
 atlas = ExtResource("3_yoiwy")
+region = Rect2(0, 0, 333, 401)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk124"]
+atlas = ExtResource("3_ovsto")
 region = Rect2(0, 0, 333, 401)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cyh01"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gindb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkjv7")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3lgaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk124")
 }],
 "loop": true,
 "name": &"default",
