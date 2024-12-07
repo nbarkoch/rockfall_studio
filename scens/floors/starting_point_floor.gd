@@ -14,5 +14,5 @@ func _ready():
 	start_position.x += round(tile_size / 2)
 	start_position.y += round(tile_size / 2)
 	# Now set the player's position to this calculated start position
-	roomManager.setPlayerPosition(start_position)
+	roomManager.set_player_position(start_position)
 

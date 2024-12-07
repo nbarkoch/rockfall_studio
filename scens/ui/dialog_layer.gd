@@ -7,7 +7,11 @@ class_name DialogLayer
 @onready var retryButtonAnimation = $Control/Panel/ButtonsPanel/RetryButton/AnimationPlayer
 @onready var dialogLayerAnimation = $DialogAnimationPlayer
 
+@onready var label = $Control/Panel/PanelContainer/Label
+var content: String = ""
+
 func _ready():
+	label.text = content
 	pass 
 
 func enter():
@@ -23,10 +27,10 @@ func _on_retry_button_pressed():
 	retryButtonAnimation.play("button_click")
 
 func _on_next_animation_finished(anim_name):
-	roomManager.toNextLevel()
+	roomManager.to_next_level()
 
 func _on_retry_animation_finished(anim_name):
-	roomManager.retryLevel()
+	roomManager.retry_level()
 
 
 func _on_dialog_finished(anim_name):

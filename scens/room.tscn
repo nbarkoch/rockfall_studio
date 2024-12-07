@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgt36nw3546mi"]
+[gd_scene load_steps=11 format=3 uid="uid://cgt36nw3546mi"]
 
 [ext_resource type="Script" path="res://scens/room_loader.gd" id="1_w60gt"]
 [ext_resource type="PackedScene" uid="uid://djjn82lts3gi5" path="res://scens/ui/env1_frame.tscn" id="2_ulb0x"]
 [ext_resource type="Texture2D" uid="uid://qw6ilnlb74vy" path="res://sprites/s_retry_icn.png" id="3_0ex2d"]
+[ext_resource type="Texture2D" uid="uid://bhyqk4ykabpy8" path="res://sprites/s_home_icn.png" id="4_idcw4"]
+[ext_resource type="FontFile" uid="uid://botjmvxf504bt" path="res://fonts/JUNGLEFE.TTF" id="4_p5pa4"]
 
 [sub_resource type="Animation" id="Animation_y08fw"]
 length = 0.001
@@ -40,6 +42,26 @@ _data = {
 "button_click": SubResource("Animation_ueo7b")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iatgy"]
+bg_color = Color(0.835294, 0.686275, 0.52549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.537255, 0.415686, 0.313726, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_pvw24"]
+font = ExtResource("4_p5pa4")
+font_color = Color(0.964706, 0.929412, 0.870588, 1)
+outline_size = 7
+outline_color = Color(0.301961, 0.160784, 0.105882, 1)
+
 [node name="room" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_w60gt")
@@ -72,5 +94,47 @@ libraries = {
 }
 speed_scale = 2.0
 
+[node name="HomeButton" type="TextureButton" parent="CanvasLayer"]
+clip_contents = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 11.0
+offset_right = -14.0
+offset_bottom = 61.0
+grow_horizontal = 0
+pivot_offset = Vector2(25, 25)
+size_flags_vertical = 4
+texture_normal = ExtResource("4_idcw4")
+stretch_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HomeButton"]
+libraries = {
+"": SubResource("AnimationLibrary_pkh1e")
+}
+speed_scale = 2.0
+
+[node name="TitlePanelContainer" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iatgy")
+
+[node name="Label" type="Label" parent="CanvasLayer/TitlePanelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 0.921569, 0.862745, 1)
+text = "Hello!"
+label_settings = SubResource("LabelSettings_pvw24")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="CanvasLayer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/RetryButton/AnimationPlayer" to="." method="_on_retry_animation_finished"]
+[connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/HomeButton/AnimationPlayer" to="." method="_on_home_animation_finished"]

@@ -39,7 +39,7 @@ func start_fall_sequence(body, player_map):
 	tempMapHanlder = player_map
 	tempMapHanlder.remove_child(body)
 	block_handler.add_child(body)
-	body.setPosition(Vector2.ZERO)
+	body.set_position(Vector2.ZERO)
 	body.move_from_p = Vector2.ZERO 
 	body.disable_silding = true
 	body.block()
@@ -51,7 +51,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "fall" and capturedBody and tempMapHanlder:
 		block_handler.remove_child(capturedBody)
 		tempMapHanlder.add_child(capturedBody)
-		capturedBody.setPosition(position)
+		capturedBody.set_position(position)
 		capturedBody.disable_silding = false
 		capturedBody.locate()
 		capturedBody.z_index = -2

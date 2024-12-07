@@ -12,10 +12,15 @@ var swipe_end_time = 0
 
 var tileMap: TileMap = null
 
-var currentLevelNum = 1
+var current_level_num = 1
+var current_num_steps = 0
 
 @onready var player: Player = null
 signal player_position_changed(position: Vector2)
+signal on_level_changed(level_num: int)
+
+func _ready():
+	load_levles_config()
 
 func _process(delta):
 	if Input.is_action_just_pressed("swipe - mause"):
@@ -43,11 +48,11 @@ func _process(delta):
 	else:
 		swiping = false
 
-func setPlayer(player: Player):
+func set_player(player: Player):
 	self.player = player
-	setPlayerPosition(player.position)
+	set_player_position(player.position)
 
-func setTileMap(tileMap: TileMap):
+func set_tileMap(tileMap: TileMap):
 	self.tileMap = tileMap
 
 func get_player_position():
@@ -55,54 +60,54 @@ func get_player_position():
 		return player.position
 	return Vector2.ZERO
 	
+func add_step():
+	current_num_steps += 1
 	
-func setPlayerPosition(position: Vector2):
-	player.setPosition(position)
+func set_player_position(position: Vector2):
+	player.set_position(position)
 	emit_signal("player_position_changed", position)
 
-var dialogLayer: DialogLayer = null
-
-func finishLevel():
+var dialog_layer: DialogLayer = null
+const MAX_SCORE = 10
+func finish_level():
+	var min_steps = levels_data[current_level_num - 1]["minSteps"]
+	var max_steps = min_steps * 4
+	
+	var score = int(MAX_SCORE - (((current_num_steps - min_steps) * MAX_SCORE)/(max_steps - min_steps)))
 	get_tree().paused = true
 	var dialog_layer_scene = load("res://scens/ui/dialog_layer.tscn")
-	var dialog_layer: DialogLayer = dialog_layer_scene.instantiate()
-	dialogLayer = dialog_layer
+	dialog_layer = dialog_layer_scene.instantiate()
+	var title = ""
+	if score >= 1 and score <= 3:
+		title = "Could Done Better!"
+	elif score >= 4 and score <= 7:
+		title = "Good Job!"
+	elif score >= 8 and score <= 10:
+		title = "Congrats!"
+	# Set the dialog content
+	dialog_layer.content = """
+	%s
+	Score: %d
+	Steps: %d
+	""" % [title, score, current_num_steps]
 	add_child(dialog_layer)  
 	dialog_layer.enter()
 
 
-const levels = [
-	"res://scens/levels/level1.tscn",
-	"res://scens/levels/level2.tscn",
-	"res://scens/levels/level3.tscn",
-	"res://scens/levels/level4.tscn",
-	"res://scens/levels/level5.tscn",
-	"res://scens/levels/level6.tscn",
-	"res://scens/levels/level7.tscn",
-	"res://scens/levels/level8.tscn",
-	"res://scens/levels/level9.tscn",
-	"res://scens/levels/level10.tscn",
-	"res://scens/levels/level11.tscn",
-	"res://scens/levels/level12.tscn",
-	"res://scens/levels/level13.tscn",
-	"res://scens/levels/level14.tscn",
-	"res://scens/levels/level15.tscn",
-	"res://scens/levels/level16.tscn",
-	"res://scens/levels/level17.tscn",
-	"res://scens/levels/level18.tscn",
-	"res://scens/levels/level19.tscn",
-	"res://scens/levels/level20.tscn",
-]
+func get_level_path(level_num: int) -> String:
+	return "res://scens/levels/level%d.tscn" % level_num
 
-func loadLevel(level_num: int):
-	currentLevelNum = level_num
-	var tilemap_scene = load(levels[level_num - 1])
+func load_level(level_num: int):
+	current_level_num = level_num
+	current_num_steps = 0
+	var level_path = get_level_path(current_level_num)
+	var tilemap_scene = load(level_path)
 	var tilemap_instance: TileMap = tilemap_scene.instantiate()
 	tilemap_instance.z_index = 0
 	tilemap_instance.y_sort_enabled = true
 	tilemap_instance.z_as_relative = true
 	add_child(tilemap_instance)  
-	setTileMap((tilemap_instance))
+	set_tileMap((tilemap_instance))
 	
 	var player_scene = load("res://scens/player_stuff/character.tscn")
 	var player = player_scene.instantiate()
@@ -110,23 +115,32 @@ func loadLevel(level_num: int):
 	player.y_sort_enabled = true
 	player.z_as_relative = true
 	tilemap_instance.add_child(player)
-	player.setPosition(Vector2.ZERO)
-	setPlayer(player)
+	player.set_position(Vector2.ZERO)
+	set_player(player)
+	emit_signal("on_level_changed", level_num)
 
 
-func toNextLevel():
+func to_next_level():
 	tileMap.queue_free()
-	loadLevel(currentLevelNum + 1)
-	if dialogLayer != null:
-		dialogLayer.exit()
+	load_level(current_level_num + 1)
+	if dialog_layer != null:
+		dialog_layer.exit()
 	
 	
-func retryLevel():
+func retry_level():
 	tileMap.queue_free()
-	loadLevel(currentLevelNum)
-	if dialogLayer != null:
-		dialogLayer.exit()
+	load_level(current_level_num)
+	if dialog_layer != null:
+		dialog_layer.exit()
 	
 func dialogAnimationExitFinished():
 	get_tree().paused = false
-	dialogLayer.queue_free()
+	dialog_layer.queue_free()
+
+var levels_data = null
+func load_levles_config():
+	var file = "res://scens/levels/levels.json"
+	var json_as_text = FileAccess.get_file_as_string(file)
+	var json_as_dict = JSON.parse_string(json_as_text)
+	if json_as_dict:
+		levels_data = json_as_dict

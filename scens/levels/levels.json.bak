@@ -1,0 +1,97 @@
+[
+	{
+		"name": "Level 1",
+		"minSteps": 10,
+		"maxSteps": 20
+	},
+	{
+		"name": "Level 2",
+		"minSteps": 9,
+		"maxSteps": 20
+	},
+	{
+		"name": "Level 3",
+		"minSteps": 6,
+		"maxSteps": 20
+	},
+	{
+		"name": "Level 4",
+		"minSteps": 9,
+		"maxSteps": 20
+	},
+	{
+		"name": "Level 5",
+		"minSteps": 8,
+		"maxSteps": 20
+	},
+	{
+		"name": "Level 6",
+		"minSteps": 8,
+		"maxSteps": 25
+	},
+	{
+		"name": "Level 7",
+		"minSteps": 7,
+		"maxSteps": 20
+	},
+	{
+		"name": "Level 8",
+		"minSteps": 12,
+		"maxSteps": 30
+	},
+	{
+		"name": "Level 9",
+		"minSteps": 9,
+		"maxSteps": 20
+	},
+	{
+		"name": "Level 10",
+		"minSteps": 17,
+		"maxSteps": 35
+	},
+	{
+		"name": "Level 11",
+		"minSteps": 19,
+		"maxSteps": 45
+	},
+	{
+		"name": "Level 12",
+		"minSteps": 12,
+		"maxSteps": 35
+	},
+	{
+		"name": "Level 13",
+		"minSteps": 45,
+		"maxSteps": 100
+	},
+	{
+		"name": "Level 14",
+		"minSteps": 22,
+		"maxSteps": 45
+	},
+	{
+		"name": "Level 15",
+		"minSteps": 10,
+		"maxSteps": 25
+	},
+	{
+		"name": "Level 16",
+		"minSteps": 16,
+		"maxSteps": 36
+	},
+	{
+		"name": "Level 17",
+		"minSteps": 17,
+		"maxSteps": 36
+	},
+	{
+		"name": "Level 18",
+		"minSteps": 16,
+		"maxSteps": 36
+	},
+	{
+		"name": "Level 19",
+		"minSteps": 31,
+		"maxSteps": 65
+	},
+]

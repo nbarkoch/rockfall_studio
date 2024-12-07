@@ -27,7 +27,6 @@ func _ready():
 	move_from_p = position
 	locate()
 	
-	
 # Function to set the direction and move the block
 func move(direction: Vector2, speed: float):
 	if current_speed == 0:
@@ -59,7 +58,10 @@ func _physics_process(delta):
 					 and collider.current_speed == 0:
 					# Trigger movement on the collided statue before blocking
 					var push_direction = -collision_normal
-					collider.move(push_direction, MIN_SPEED * 2)
+					if is_movable(current_direction):
+						if not played_sound:
+							on_moved()
+						collider.move(push_direction, MIN_SPEED * 2)
 					block()
 					break
 				elif collider is MovingBlock:
@@ -73,6 +75,7 @@ func _physics_process(delta):
 			played_sound = true
 			audioStreamPlayer.stream = preload("res://sounds/drag.ogg")
 			audioStreamPlayer.play()
+			on_moved()
 		
 		move_and_slide()
 		
@@ -104,7 +107,9 @@ func is_movable(direction: Vector2, checked_bodies: Array = []) -> bool:
 	if result:
 		var collider = result.collider
 		# If this is a MovingBlock and it encounters a Statue, treat it as immovable
-		if self is MovingBlock and collider is Statue:
+		if self is MovingBlock and\
+			 not self is Statue and\
+				 collider is Statue:
 			return false
 			
 		# For other cases (Statue pushing Statue, or MovingBlock encountering MovingBlock)
@@ -128,6 +133,9 @@ func block():
 	current_speed = 0
 	audioStreamPlayer.stop()
 	
+func on_moved():
+	pass
+	
 func locate():
 	var half_size = round( (tile_size/ 2))
 	var pX = 1 if position.x >= 0 else 0
@@ -139,9 +147,7 @@ func locate():
 	move_from_p = grid_pos
 	position = grid_pos
 	pusher = null
-
-func setPosition(newPosition: Vector2):
-	position = newPosition
+	audioStreamPlayer.stop()
 
 func is_positioned_in_grid(position: Vector2) -> bool:
 	return abs(int(position.x) % tile_size) == tile_size / 2 and abs(int(position.y) % tile_size) == tile_size / 2

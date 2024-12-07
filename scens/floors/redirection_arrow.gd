@@ -54,7 +54,7 @@ func _on_area_2d_body_entered(body):
 			# Change body's velocity to allowed_direction[1]
 			if body.has_method("set_velocity"):
 				body.set_velocity(allowed_direction[1] * body_velocity.length())
-			body.setPosition(position)
+			body.set_position(position)
 			body.locate()
 			body.current_direction = allowed_direction[1]
 			# Optional: Update the sprite frame or play an animation

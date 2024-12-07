@@ -30,7 +30,7 @@ func _on_check_timer_timeout():
 			if body is Player and body.current_speed == 0 and not body.got_stuck:
 				var original_parent = body.get_parent()
 				original_parent.remove_child(body)
-				body.setPosition(Vector2.ZERO)
+				body.set_position(Vector2.ZERO)
 				body.shadowSprite.z_index = -2
 				block_handler.add_child(body)
 				body.got_stuck = true
