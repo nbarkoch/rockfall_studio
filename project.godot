@@ -43,6 +43,10 @@ project/assembly_name="RockFall"
 
 2d_physics/layer_1="blocks"
 2d_physics/layer_2="floors"
+2d_physics/layer_29="move-up"
+2d_physics/layer_30="move-down"
+2d_physics/layer_31="move-left"
+2d_physics/layer_32="move-right"
 
 [rendering]
 

@@ -56,7 +56,7 @@
 	},
 	{
 		"name": "Level 12",
-		"minSteps": 12,
+		"minSteps": 13,
 		"maxSteps": 35
 	},
 	{
@@ -93,5 +93,10 @@
 		"name": "Level 19",
 		"minSteps": 31,
 		"maxSteps": 65
+	},
+	{
+		"name": "Level 20",
+		"minSteps": 16,
+		"maxSteps": 36
 	},
 ]

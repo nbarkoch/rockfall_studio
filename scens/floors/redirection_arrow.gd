@@ -57,6 +57,7 @@ func _on_area_2d_body_entered(body):
 			body.set_position(position)
 			body.locate()
 			body.current_direction = allowed_direction[1]
+			body.set_layer_direction(allowed_direction[1])
 			# Optional: Update the sprite frame or play an animation
 		animated_sprite.frame = 1
 		

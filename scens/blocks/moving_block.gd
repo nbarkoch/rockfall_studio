@@ -23,9 +23,24 @@ var played_sound = false
 
 var disable_silding = false
 
+var pure_collision_mask: int 
+const layers = {
+	Vector2.UP: 29, 
+	Vector2.DOWN: 30,
+	Vector2.LEFT: 31,
+	Vector2.RIGHT: 32,
+}
+
 func _ready():
 	move_from_p = position
 	locate()
+	pure_collision_mask = collision_mask
+
+	
+func set_layer_direction(direction: Vector2):
+	collision_mask = pure_collision_mask
+	collision_mask |= 1 << layers[direction]
+	
 	
 # Function to set the direction and move the block
 func move(direction: Vector2, speed: float):
@@ -35,7 +50,21 @@ func move(direction: Vector2, speed: float):
 		current_direction = direction
 		current_speed = min(max(speed, MIN_SPEED), MAX_SPEED)
 		played_sound = false
+		set_layer_direction(direction)
 		
+	
+var fog_effect: PackedScene = preload("res://scens/effects/small_fog.tscn")	
+var fog_instance: Node2D = null
+func create_fog_effect():
+	fog_instance = fog_effect.instantiate()
+	fog_instance.position = current_direction * (tile_size / -3)
+	if current_direction == Vector2.LEFT:
+		fog_instance.flipped = true
+	add_child(fog_instance)
+	
+func remove_fog_effect():
+	if fog_instance != null:
+		fog_instance.request_remove()
 	
 func _physics_process(delta):
 	if abs(current_direction.x) > 0:
@@ -84,6 +113,7 @@ func _physics_process(delta):
 		locate()
 	elif not disable_silding:
 		velocity = Vector2.ZERO
+		collision_mask = pure_collision_mask
 		move_and_slide()
 		#audioStreamPlayer.stop()
 		
@@ -131,10 +161,13 @@ func block():
 	current_direction = Vector2.ZERO
 	velocity = Vector2.ZERO
 	current_speed = 0
+	collision_mask = pure_collision_mask
 	audioStreamPlayer.stop()
+	remove_fog_effect()
+	
 	
 func on_moved():
-	pass
+	create_fog_effect()
 	
 func locate():
 	var half_size = round( (tile_size/ 2))
@@ -159,7 +192,7 @@ func _on_area_2d_body_entered(body):
 	and body != self \
 	and body is MovingBlock \
 	and collision_layer == body.collision_layer \
-	and collision_mask == body.collision_mask:
+	and pure_collision_mask == body.pure_collision_mask:
 		if pusher != body and body.current_speed != 0:
 			var collision_normal = (position - body.position).normalized()
 			var normalized_body_direction = body.current_direction.normalized()

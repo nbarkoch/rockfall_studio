@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var static_body = get_node("StaticBody2D")
 @onready var collision_shape = get_node("StaticBody2D/CollisionShape2D")
 @onready var animated_sprite = get_node("StaticBody2D/AnimatedSprite2D")
 @onready var roomManager = get_node("/root/RoomManager")
@@ -8,47 +9,30 @@ extends Node2D
 var direction: String = "UP"
 
 var allowed_direction = Vector2.RIGHT
-var should_disable_collision = false
 var tile_size = 104
 
+const directions = {
+	"UP": Vector2.UP,
+	"DOWN": Vector2.DOWN,
+	"LEFT": Vector2.LEFT,
+	"RIGHT": Vector2.RIGHT,
+}
+
+const layers = {
+	"UP": 30, #DOWN
+	"DOWN": 29, #UP
+	"LEFT": 32, #RIGHT
+	"RIGHT": 31, #LEFT
+}
+
 func set_sprite():
-	var directions = {
-		"UP": Vector2.UP,
-		"DOWN": Vector2.DOWN,
-		"LEFT": Vector2.LEFT,
-		"RIGHT": Vector2.RIGHT,
-	}
 	allowed_direction = directions[direction]
 	animated_sprite.play(direction.to_lower())
 
+func set_collision():
+	static_body.collision_layer = 1 << layers[direction]
+	
 func _ready():
 	set_sprite()
-	roomManager.connect("player_position_changed", on_player_position_changed)
-	on_player_position_changed(roomManager.get_player_position())
-	
+	set_collision()
 
-func _process(delta):
-	collision_shape.disabled = should_disable_collision
-
-
-func on_player_position_changed(player_position: Vector2):
-	var not_allowed_direction = -allowed_direction
-	var block_position = position
-	var player_about_to_do = Vector2.ZERO
-	if abs(block_position.y - player_position.y) < tile_size:
-		player_about_to_do = Vector2.RIGHT if block_position.x - player_position.x >= 0 else Vector2.LEFT
-	if abs(block_position.x - player_position.x) < tile_size:
-		player_about_to_do = Vector2.DOWN if block_position.y - player_position.y >= 0 else Vector2.UP
-	# Enable or disable collision based on the direction
-	should_disable_collision = (player_about_to_do != not_allowed_direction)
-	
-
-#func on_player_position_changed(player_position: Vector2):
-	#var block_position = position
-	#var player_about_to_do = Vector2.ZERO
-	#if abs(block_position.y - player_position.y) < tile_size:
-		#player_about_to_do = Vector2.RIGHT if block_position.x - player_position.x >= 0 else Vector2.LEFT
-	#if abs(block_position.x - player_position.x) < tile_size:
-		#player_about_to_do = Vector2.DOWN if block_position.y - player_position.y >= 0 else Vector2.UP
-	## Enable or disable collision based on the direction
-	#should_disable_collision = (player_about_to_do == allowed_direction)
