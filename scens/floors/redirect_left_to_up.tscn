@@ -163,7 +163,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_viqvy"]
 size = Vector2(104, 104)
 
-[node name="Redirect_LeftToUp" type="Node2D"]
+[node name="Redirect_LeftToUp" type="Node2D" groups=["redirection_floors"]]
 script = ExtResource("1_mgy80")
 direction = "LEFT_TO_UP"
 

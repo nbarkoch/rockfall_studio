@@ -42,6 +42,11 @@ func set_layer_direction(direction: Vector2):
 	collision_mask |= 1 << layers[direction]
 	
 	
+func redirect(direction: Vector2):
+	move_from_p = position
+	current_direction = direction
+	set_layer_direction(direction)
+	
 # Function to set the direction and move the block
 func move(direction: Vector2, speed: float):
 	if current_speed == 0:
@@ -124,6 +129,7 @@ func is_movable(direction: Vector2, checked_bodies: Array = []) -> bool:
 		return false
 	checked_bodies.append(self)
 	
+	collision_mask |= 1 << layers[direction]
 	# Cast a ray in the movement direction to check for potential collisions
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(
@@ -136,6 +142,12 @@ func is_movable(direction: Vector2, checked_bodies: Array = []) -> bool:
 	
 	if result:
 		var collider = result.collider
+		
+		# Check for BlockOneSideEntryFloor
+		if collider is BlockOneSideEntryFloor:
+			if collider.allowed_direction == -direction:
+				return false
+		
 		# If this is a MovingBlock and it encounters a Statue, treat it as immovable
 		if self is MovingBlock and\
 			 not self is Statue and\
@@ -196,22 +208,25 @@ func _on_area_2d_body_entered(body):
 		if pusher != body and body.current_speed != 0:
 			var collision_normal = (position - body.position).normalized()
 			var normalized_body_direction = body.current_direction.normalized()
-			var normalized_collision_normal = collision_normal.normalized()
-			# Check if bodies are properly aligned
+			
+			# First check if moving blocks are aligned properly
 			var is_aligned = false
-			if abs(normalized_body_direction.x) > 0.9:  # Moving horizontally
-				# Check vertical alignment
+			var direction_check = false
+			
+			if abs(normalized_body_direction.x) > 0.9:  # Horizontal movement
 				is_aligned = abs(position.y - body.position.y) < 5  # Small threshold for floating point imprecision
-			else:  # Moving vertically
-				# Check horizontal alignment
+				# Check if the block is being pushed from the correct side
+				direction_check = sign(position.x - body.position.x) == sign(normalized_body_direction.x)
+			else:  # Vertical movement
 				is_aligned = abs(position.x - body.position.x) < 5  # Small threshold for floating point imprecision
-			# Stricter direction check and alignment check
-			if normalized_body_direction.dot(normalized_collision_normal) >= 0.99 and is_aligned:
-				# Additional position check to prevent diagonal movement
-				if is_movable(normalized_body_direction):
-					pusher = body
-					move(normalized_body_direction, body.current_speed)
-
-
+				# Check if the block is being pushed from the correct side
+				direction_check = sign(position.y - body.position.y) == sign(normalized_body_direction.y)
+			
+			# If aligned and being pushed from correct direction
+			if is_aligned and direction_check and is_movable(normalized_body_direction):
+				pusher = body
+				move(normalized_body_direction, body.current_speed)
+				
+				
 func _on_area_2d_body_exited(body):
 	pusher = null

@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name RedirectionFloor
+
 @onready var animated_sprite = get_node("Area2D/AnimatedSprite2D")
 @onready var roomManager = get_node("/root/RoomManager")
 
@@ -45,22 +47,18 @@ func set_sprite_and_direction():
 func _ready():
 	set_sprite_and_direction()
 
-
 func _on_area_2d_body_entered(body):
 	if body is MovingBlock:
-		var body_velocity = body.velocity if body.has_method("get_velocity") else Vector2.ZERO
-		# Check if the body's velocity matches the allowed_direction[0]
-		if -body_velocity.normalized() == allowed_direction[0]:
-			# Change body's velocity to allowed_direction[1]
-			if body.has_method("set_velocity"):
-				body.set_velocity(allowed_direction[1] * body_velocity.length())
+		var current_direction = body.current_direction
+		
+		# If the body is moving and entering in the correct direction
+		if body.current_speed != 0 and -current_direction == allowed_direction[0]:
+			# Then redirect
+			body.redirect(allowed_direction[1])
 			body.set_position(position)
 			body.locate()
-			body.current_direction = allowed_direction[1]
-			body.set_layer_direction(allowed_direction[1])
-			# Optional: Update the sprite frame or play an animation
-		animated_sprite.frame = 1
+			animated_sprite.frame = 1
 		
 func _on_area_2d_body_exited(body):
 	if body is MovingBlock:
-		animated_sprite.frame = 0 
+		animated_sprite.frame = 0

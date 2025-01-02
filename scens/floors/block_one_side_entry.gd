@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name BlockOneSideEntryFloor
+
 @onready var static_body = get_node("StaticBody2D")
 @onready var collision_shape = get_node("StaticBody2D/CollisionShape2D")
 @onready var animated_sprite = get_node("StaticBody2D/AnimatedSprite2D")
