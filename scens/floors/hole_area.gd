@@ -63,8 +63,9 @@ func _on_animation_player_animation_finished(anim_name):
 		if capturedBody is MovingStatue:
 			capturedBody.sprite2D.position.y += 20
 		if capturedBody is Statue:
-			capturedBody.pure_collision_mask = 2
 			capturedBody.z_index = -1
+		if capturedBody is MovingBlock:
+			capturedBody.pure_collision_mask = 2
 	capturedBody = null
 	tempMapHanlder = null
 
