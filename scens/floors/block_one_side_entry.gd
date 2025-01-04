@@ -21,10 +21,10 @@ const directions = {
 }
 
 const layers = {
-	"UP": 30, #DOWN
-	"DOWN": 29, #UP
-	"LEFT": 32, #RIGHT
-	"RIGHT": 31, #LEFT
+	"UP": 29, #DOWN
+	"DOWN": 28, #UP
+	"LEFT": 31, #RIGHT
+	"RIGHT": 30, #LEFT
 }
 
 func set_sprite():

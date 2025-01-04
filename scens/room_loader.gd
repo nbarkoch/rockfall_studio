@@ -12,7 +12,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	roomManager.connect("on_level_changed", on_level_changed)
-	roomManager.load_level(20)
+	roomManager.load_level(21)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -96,7 +96,7 @@
 	},
 	{
 		"name": "Level 20",
-		"minSteps": 16,
-		"maxSteps": 36
+		"minSteps": 12,
+		"maxSteps": 34
 	},
 ]

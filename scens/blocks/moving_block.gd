@@ -8,10 +8,10 @@ const MAX_SPEED = 10000
 const TILE_SIZE = 104
 const HALF_TILE_SIZE = TILE_SIZE / 2
 const DIRECTION_LAYERS = {
-	Vector2.UP: 29, 
-	Vector2.DOWN: 30,
-	Vector2.LEFT: 31,
-	Vector2.RIGHT: 32,
+	Vector2.UP: 28, 
+	Vector2.DOWN: 29,
+	Vector2.LEFT: 30,
+	Vector2.RIGHT: 31,
 }
 
 # Onready variables

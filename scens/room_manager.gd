@@ -1,51 +1,51 @@
 extends Node2D
 
 
-var swipe_lengh = 40
+var swipe_lengh = 30
 var startPos: Vector2
-var currPos: Vector2
+var endPos: Vector2
 var swiping = false
-var speed = 100
-var swiping_axis_thresh = 20
+var swiping_axis_thresh = 104 - 20
 var swipe_start_time = 0
-var swipe_end_time = 0
-
-var tileMap: TileMap = null
-
-var current_level_num = 1
-var current_num_steps = 0
 
 @onready var player: Player = null
 signal player_position_changed(position: Vector2)
 signal on_level_changed(level_num: int)
+
+var tileMap: TileMap = null
+var current_level_num = 1
+var current_num_steps = 0
 
 func _ready():
 	load_levles_config()
 
 func _process(delta):
 	if Input.is_action_just_pressed("swipe - mause"):
-		if !swiping:
-			swiping = true
-			swipe_start_time = 0
-			swipe_end_time = 0
-			startPos = get_global_mouse_position()
-	if Input.is_action_pressed("swipe - mause"):		
-		if swiping:
-			swipe_end_time += delta
-			currPos = get_global_mouse_position()
-			var swipe_distance = currPos.distance_to(startPos)
-			if swipe_distance >= swipe_lengh:
-				var swipe_duration = (swipe_end_time - swipe_start_time)
-				var swipe_speed = swipe_distance * 2.5 / swipe_duration if swipe_duration > 0 else 0
-				if abs(startPos.y - currPos.y) <= swiping_axis_thresh:
-					var vec = Vector2.RIGHT if currPos.x > startPos.x  else Vector2.LEFT
-					swiping = false
-					player.move(vec, swipe_speed)
-				elif abs(startPos.x - currPos.x) <= swiping_axis_thresh:
-					var vec = Vector2.DOWN if currPos.y > startPos.y  else Vector2.UP
-					swiping = false
-					player.move(vec, swipe_speed)
-	else:
+		swiping = true
+		startPos = get_global_mouse_position()
+		swipe_start_time = Time.get_ticks_msec() / 1000.0
+		
+	if Input.is_action_just_released("swipe - mause") and swiping:
+		endPos = get_global_mouse_position()
+		var swipe_end_time = Time.get_ticks_msec() / 1000.0
+		var swipe_duration = swipe_end_time - swipe_start_time
+		var swipe_distance = endPos.distance_to(startPos)
+		
+		if swipe_distance >= swipe_lengh:
+			# Calculate speed based on duration - shorter duration = higher speed
+			var speed_multiplier = 1.0 / max(swipe_duration, 0.1) # Prevent division by zero
+			var swipe_speed = swipe_distance * speed_multiplier * 2.5
+			
+			# Clamp speed between reasonable values
+			swipe_speed = clamp(swipe_speed, 1000, 10000)
+			
+			if abs(startPos.y - endPos.y) <= swiping_axis_thresh:
+				var vec = Vector2.RIGHT if endPos.x > startPos.x else Vector2.LEFT
+				player.move(vec, swipe_speed)
+			elif abs(startPos.x - endPos.x) <= swiping_axis_thresh:
+				var vec = Vector2.DOWN if endPos.y > startPos.y else Vector2.UP
+				player.move(vec, swipe_speed)
+		
 		swiping = false
 
 func set_player(player: Player):
